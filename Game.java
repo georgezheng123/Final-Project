@@ -1,7 +1,7 @@
 public class Game{
 	
 	private Board ChessBoard;
-	public ArrayList listOfMoves;
+	private ArrayList listOfMoves;
 
 	public void endGame(){
 
