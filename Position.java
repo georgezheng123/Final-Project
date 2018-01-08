@@ -9,15 +9,15 @@ public class Position{
 	}
 
 	public boolean isOccupied(){
-
+		return false;
 	}
 
 	public int getX(){
-
+		return xPosition;
 	}
 
 	public int getY(){
-		
+		return yPosition;
 	}
 
 }
