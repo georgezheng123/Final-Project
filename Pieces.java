@@ -1,10 +1,10 @@
 public abstract class Pieces{
 	
 	private int color;
-	private position Position;
+	private Position position;
 
-	public boolean validMove();
+	public abstract boolean validMove();
 
-	public boolean move();
+	public abstract boolean move();
 
 }
