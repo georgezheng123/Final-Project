@@ -3,9 +3,6 @@ public class Position{
 	private int xPosition;
 	private int yPosition;
 
-<<<<<<< HEAD
-
-=======
 	public Position(int x, int y){
 		xPosition = x;
 		yPosition = y;
@@ -13,15 +10,15 @@ public class Position{
 
 	public boolean isOccupied(){
 
+		return false;
 	}
 
 	public int getX(){
-
+		return xPosition;
 	}
 
 	public int getY(){
-		
+		return yPosition;
 	}
->>>>>>> george
 
 }
