@@ -9,7 +9,7 @@ public class Position{
 	}
 
 	public boolean isOccupied(){
-
+<<<<<<< HEAD
 		return false;
 	}
 
@@ -20,5 +20,8 @@ public class Position{
 	public int getY(){
 		return yPosition;
 	}
+=======
+>>>>>>> george
+
 
 }
