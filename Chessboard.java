@@ -12,12 +12,11 @@ public class Chessboard {
     private final JLabel message = new JLabel(
             "PLAY CHESS");
 
-    Chessboard() {
+    Chessboard(){
         initializeGui();
     }
 
     public final void initializeGui() {
-        // set up the main GUI
         gui.setBorder(new EmptyBorder(5, 5, 5, 5));
         JToolBar tools = new JToolBar();
         tools.setFloatable(false);
