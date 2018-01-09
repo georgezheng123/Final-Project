@@ -29,10 +29,7 @@ public class Chessboard {
         gui.add(chessBoard);
 
 
-        //fill the chess board
-        chessBoard.add(new JLabel(""));
-        // fill the top row
-        
+        chessBoard.add(new JLabel(""));        
     }
 
     public final JComponent getChessBoard() {
