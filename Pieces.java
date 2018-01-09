@@ -14,17 +14,17 @@ import java.util.ArrayList;
 }
 */
 
-public class Piece extends JLabel{
+public class Pieces extends JLabel{
 	private Position position;
 	private int color;
 	
-	public Piece(Position coordinate, int colors){
+	public Pieces(Position coordinate, int colors){
 		position = coordinate;
 		color = colors;
 	}
 	
 	
-	public Piece(int x, int y, int colors){
+	public Pieces(int x, int y, int colors){
 		position = new Position(x,y);
 		color = colors;
 	}
