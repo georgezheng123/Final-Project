@@ -10,8 +10,7 @@ public class Chessboard {
     private JButton[][] chessBoardSquares = new JButton[8][8];
     private JPanel chessBoard;
     private final JLabel message = new JLabel(
-            "Chess Champ is ready to play!");
-    private static final String COLS = "ABCDEFGH";
+            "PLAY CHESS");
 
     Chessboard() {
         initializeGui();
