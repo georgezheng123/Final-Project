@@ -2,18 +2,6 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 
-/*public abstract class Pieces{
-	
-	private int color;
-	private Position position;
-
-	public abstract boolean validMove();
-
-	public abstract boolean move();
-
-}
-*/
-
 public class Pieces extends JLabel{
 	private Position position;
 	private int color;
@@ -38,6 +26,6 @@ public class Pieces extends JLabel{
 	}
 	
 	public String toString(){
-		return " "; //more to be added
+		return " "; 
 	}
 }

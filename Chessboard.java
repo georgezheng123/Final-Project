@@ -16,12 +16,11 @@ public class Chessboard extends JFrame {
 	public static int width = 1000;
 
 
-    Chessboard() {
+    Chessboard(){
         initializeGui();
     }
 
     public final void initializeGui() {
-        // set up the main GUI
         gui.setBorder(new EmptyBorder(5, 5, 5, 5));
         this.setTitle("PLAY CHESS");
         this.setSize(width, height);
@@ -38,8 +37,16 @@ public class Chessboard extends JFrame {
        
 
 
+<<<<<<< HEAD
         
         
+=======
+        chessBoard.add(new JLabel(""));        
+    }
+
+    public final JComponent getChessBoard() {
+        return chessBoard;
+>>>>>>> bea593ebd1fbf48b730eaf6ae77e4b03eb4dcaba
     }
 
     public final JComponent getGui() {
