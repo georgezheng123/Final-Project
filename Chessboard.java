@@ -1,62 +1,64 @@
-// help from https://stackoverflow.com/questions/21077322/create-a-chess-board-with-jpanel
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import javax.swing.*;
-import javax.swing.border.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.Color;
 
-public class Chessboard {
+class ChessBoard extends JFrame implements ActionListener {
 
-    private final JPanel gui = new JPanel(new BorderLayout(3, 3));
-    private JButton[][] chessBoardSquares = new JButton[8][8];
-    private JPanel chessBoard;
-    private final JLabel message = new JLabel(
-            "PLAY CHESS");
+    private JButton[][] tiles; 
+    private Pieces[][] pieces;
+    private JPanel panel;
 
-    Chessboard(){
-        initializeGui();
+    public static void main(String[] args){
+        ChessBoard a = new ChessBoard();
     }
 
-    public final void initializeGui() {
-        gui.setBorder(new EmptyBorder(5, 5, 5, 5));
-        JToolBar tools = new JToolBar();
-        tools.setFloatable(false);
-        gui.add(tools, BorderLayout.PAGE_START);
-        
-       
+    public ChessBoard() {
+        this.tiles = new JButton[8][8];
+        this.pieces = new Pieces[8][8];
+        this.panel = new JPanel(new GridLayout(8, 8));
 
-        chessBoard = new JPanel(new GridLayout(0, 9));
-        chessBoard.setBorder(new LineBorder(Color.BLACK));
-        gui.add(chessBoard);
-
-
-        chessBoard.add(new JLabel(""));        
+        guiSetup();
     }
 
-    public final JComponent getChessBoard() {
-        return chessBoard;
-    }
-
-    public final JComponent getGui() {
-        return gui;
-    }
-
-    public static void main(String[] args) {
-        Runnable r = new Runnable() {
-
-            @Override
-            public void run() {
-                Chessboard cb =
-                        new Chessboard();
-
-                JFrame f = new JFrame("PLAY CHESS");
-                f.add(cb.getGui());
-                f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                f.setLocationByPlatform(true);
-                f.pack();
-                f.setMinimumSize(f.getSize());
-                f.setVisible(true);
+    public void guiSetup(){
+        for (int x=0; x<8; x++){
+            for (int y=0; y<8; y++){
+                tiles[x][y] = new JButton();
+                tiles[x][y].addActionListener(this);
+                emptySquare(x, y);
+                panel.add(tiles[x][y]);
+                pieces[x][y] = null;
             }
-        };
-        SwingUtilities.invokeLater(r);
+        }
+        this.add(panel);
+        this.setSize(800, 800);
+        this.setVisible(true);
     }
+
+    private void emptySquare(int row, int col) {
+        if ((row + col) % 2 == 1){
+            tiles[row][col].setBackground(Color.BLACK);
+            tiles[row][col].setOpaque(true);
+        }else{
+            tiles[row][col].setBackground(Color.WHITE);
+            tiles[row][col].setOpaque(true);
+        }
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        JButton pressed = (JButton) e.getSource();
+        int col = -1;
+        int row = -1;
+
+        for (int x=0; x<8; x++) {
+          for (int y=0; y<8; y++) {
+            if (tiles[x][y] == pressed) {
+              row = x;
+              col = y;
+          }
+      }
+  }
 }
+}
+
