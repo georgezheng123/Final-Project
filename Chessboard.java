@@ -1,97 +1,85 @@
-// help from https://stackoverflow.com/questions/21077322/create-a-chess-board-with-jpanel
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.Color;
 import javax.swing.border.*;
+import java.util.ArrayList;
 
-public class Chessboard {
+class Chessboard extends JFrame{
 
-    private final JPanel gui = new JPanel(new BorderLayout(3, 3));
-    private JPanel chessBoard;
-    private Container contents;
-    private JButton[][] Squares = new JButton[8][8];
-    private final JLabel message = new JLabel(
-            "PLAY CHESS");
+    private Pieces[][] pieces;
+    private JPanel panel;
+    //private static ArrayList<Pieces> White;
+    //private static ArrayList<Pieces> Black;
+    public static Border blackBorder = new LineBorder(Color.black);
 
-    Chessboard() {
-        initializeGui();
+    public static void main(String[] args){
+        Chessboard a = new Chessboard();
+        
     }
 
-    public final void initializeGui() {
-        // set up the main GUI
-        gui.setBorder(new EmptyBorder(5, 5, 5, 5));
-        JToolBar tools = new JToolBar();
-        tools.setFloatable(false);
-        gui.add(tools, BorderLayout.PAGE_START);
-        
+    public Chessboard() {
+        this.pieces = new Pieces[8][8];
+        this.panel = new JPanel(new GridLayout(8, 8));
+		//Black = new ArrayList<Pieces>();
+		//White = new ArrayList<Pieces>();
+		boolean backGround = false;
+		for (int row = 0; row < pieces.length; row++){
+			for(int col = 0; col < pieces[row].length; col++){
+				Pieces newpiece = new Pieces(row, col, 2);
+				
+				pieces[row][col] = newpiece;
+				newpiece.setOpaque(true);
+				newpiece.setBorder(blackBorder);
+				if (col == 0){
+					backGround = !backGround;
+				}
+				if (backGround){
+					newpiece.setBackground(Color.white);
+					backGround = false;
+				}
+				else{
+					newpiece.setBackground(Color.red);
+					backGround = true;
+				}
+				panel.add(newpiece);
+			}
+		}
+        guiSetup();
+    }
 
-        chessBoard.setBorder(new LineBorder(Color.BLACK));
-        gui.add(chessBoard);
+    public void guiSetup(){
+        this.setTitle("CHESS");
+        this.setLocation(100,100);
+        this.add(panel);
+        this.setSize(800, 800);
+        this.setVisible(true);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
 
-
-        //fill the chess board
-    //public Layout(){
-        //contents = getContentPane();
-        contents.setLayout(new GridLayout(8,8));
-    
-        //ButtonUsage buttonUsage = new ButtonUsage();
-
-    // adding board stuff
-    for (int i = 0; i < 8; i++){
-        for (int j = 0; j < 8; j++){
-        Squares[i][j] = new JButton();
-        if ((i + j) % 2 != 0){
-            Squares[i][j].setBackground(Color.BLACK);
+    /*private void emptySquare(int row, int col) {
+        if ((row + col) % 2 == 1){
+            tiles[row][col].setBackground(Color.BLACK);
+            tiles[row][col].setOpaque(true);
+        }else{
+            tiles[row][col].setBackground(Color.WHITE);
+            tiles[row][col].setOpaque(true);
         }
-        contents.add(Squares[i][j]);
-        //Squares[i][j].addActionListener(buttonUsage);        
     }
-    
-   /* private class ButtonHandler implements ActionListener{
-    	public void actionPerformed(ActionEvenet e){
-    		Object source = e.getSource();
-    		for (int i = 0; i < 8; i++){
-    		for (int j = 0; j < 8; j++){
-    			if (source == Squares[i][j]){
-    				processClick(i,j);
-    				return;
-    				}
-    			}
-    		}
-    	}
-    }*/
 
+    public void actionPerformed(ActionEvent e) {
+        JButton pressed = (JButton) e.getSource();
+        int col = -1;
+        int row = -1;
 
-        
-    }
+        for (int x=0; x<8; x++) {
+          for (int y=0; y<8; y++) {
+            if (tiles[x][y] == pressed) {
+              row = x;
+              col = y;
+          }
+      }
+  }
 }
-
-    public final JComponent getChessBoard() {
-        return chessBoard;
-    }
-
-    public final JComponent getGui() {
-        return gui;
-    }
-
-    public static void main(String[] args) {
-        Runnable r = new Runnable() {
-
-            @Override
-            public void run() {
-                Chessboard cb =
-                        new Chessboard();
-
-                JFrame f = new JFrame("PLAY CHESS");
-                f.add(cb.getGui());
-                f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                f.setLocationByPlatform(true);
-                f.pack();
-                f.setMinimumSize(f.getSize());
-                f.setVisible(true);
-            }
-        };
-        SwingUtilities.invokeLater(r);
-    }
+*/
 }
-
