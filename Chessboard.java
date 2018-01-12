@@ -1,4 +1,5 @@
 import javax.swing.*;
+<<<<<<< HEAD
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.Color;
@@ -9,9 +10,25 @@ class ChessBoard extends JFrame implements ActionListener {
     private Pieces[][] pieces;
     private JPanel panel;
 
+import javax.swing.border.*;
+import java.awt.Color;
+import java.awt.event.*;
+import java.util.ArrayList;
+
+public class Chessboard extends JFrame {
+
+	 private final JPanel gui = new JPanel(new BorderLayout(3, 3));
+	private static Container pane;
+	private Pieces[][] Location;
+	public static int height = 1000;
+	public static int width = 1000;
+
+
+
     public static void main(String[] args){
         ChessBoard a = new ChessBoard();
     }
+
 
     public ChessBoard() {
         this.tiles = new JButton[8][8];
@@ -34,6 +51,29 @@ class ChessBoard extends JFrame implements ActionListener {
         this.add(panel);
         this.setSize(800, 800);
         this.setVisible(true);
+
+    public final void initializeGui() {
+        gui.setBorder(new EmptyBorder(5, 5, 5, 5));
+        this.setTitle("PLAY CHESS");
+        this.setSize(width, height);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
+       
+	   //starting to layout the sections of the chessboard
+       pane = this.getContentPane();
+       Location = new Pieces[8][8];
+       pane.setLayout(new GridLayout(8,8));
+       //code for chessboard
+       
+       
+       
+
+        chessBoard.add(new JLabel(""));        
+    }
+
+    public final JComponent getChessBoard() {
+        return chessBoard;
+
     }
 
     private void emptySquare(int row, int col) {
@@ -45,6 +85,7 @@ class ChessBoard extends JFrame implements ActionListener {
             tiles[row][col].setOpaque(true);
         }
     }
+
 
     public void actionPerformed(ActionEvent e) {
         JButton pressed = (JButton) e.getSource();
@@ -60,5 +101,14 @@ class ChessBoard extends JFrame implements ActionListener {
       }
   }
 }
+}
+
+
+    public static void main(String[] args) {
+       Chessboard c = new Chessboard();
+       c.setVisible(true);
+       c.setSize(new Dimension(1000,1000));
+       c.setDefaultCloseOperation(EXIT_ON_CLOSE);
+       }
 }
 
