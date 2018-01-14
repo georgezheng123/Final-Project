@@ -50,125 +50,125 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
 
 		//White Rook
         ImageIcon WhiteRook = new ImageIcon("./Pieces/WhiteRook.png"); 
-        JLabel WhiteRookPiece = new JLabel(WhiteRook);
+        Pieces WhiteRookPiece = new Pieces(new JLabel(WhiteRook));
         JPanel WhiteRookPanel = (JPanel)chessBoard.getComponent( 56 );
-        WhiteRookPanel.add(WhiteRookPiece);
-        WhiteRookPiece = new JLabel(WhiteRook);
+        WhiteRookPanel.add(WhiteRookPiece.getJLabel());
+        WhiteRookPiece = new Pieces(new JLabel(WhiteRook));
         WhiteRookPanel = (JPanel)chessBoard.getComponent( 63 );
-        WhiteRookPanel.add(WhiteRookPiece);
+        WhiteRookPanel.add(WhiteRookPiece.getJLabel());
         //White Knight
         ImageIcon WhiteKnight = new ImageIcon("./Pieces/WhiteKnight.png"); 
-        JLabel WhiteKnightPiece = new JLabel(WhiteKnight);
+        Pieces WhiteKnightPiece = new Pieces(new JLabel(WhiteKnight));
         JPanel WhiteKnightPanel = (JPanel)chessBoard.getComponent( 57 );
-        WhiteKnightPanel.add(WhiteKnightPiece);
-        WhiteKnightPiece = new JLabel(WhiteKnight);
+        WhiteKnightPanel.add(WhiteKnightPiece.getJLabel());
+        WhiteKnightPiece = new Pieces(new JLabel(WhiteKnight));
         WhiteKnightPanel = (JPanel)chessBoard.getComponent( 62 );
-        WhiteKnightPanel.add(WhiteKnightPiece);
+        WhiteKnightPanel.add(WhiteKnightPiece.getJLabel());
         //White Pawns
-         ImageIcon WhitePawn = new ImageIcon("./Pieces/WhitePawn.png"); 
-        JLabel  WhitePawnPiece = new JLabel( WhitePawn);
+        ImageIcon WhitePawn = new ImageIcon("./Pieces/WhitePawn.png"); 
+        Pieces WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
         JPanel WhitePawnPanel = (JPanel)chessBoard.getComponent( 48 );
-        WhitePawnPanel.add( WhitePawnPiece);
-        WhitePawnPiece = new JLabel( WhitePawn);
+        WhitePawnPanel.add( WhitePawnPiece.getJLabel());
+        WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
         WhitePawnPanel = (JPanel)chessBoard.getComponent( 49 );
-        WhitePawnPanel.add( WhitePawnPiece);
-        WhitePawnPiece = new JLabel( WhitePawn);
+        WhitePawnPanel.add( WhitePawnPiece.getJLabel());
+        WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
         WhitePawnPanel = (JPanel)chessBoard.getComponent( 50 );
-        WhitePawnPanel.add( WhitePawnPiece);
-        WhitePawnPiece = new JLabel( WhitePawn);
+        WhitePawnPanel.add( WhitePawnPiece.getJLabel());
+        WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
         WhitePawnPanel = (JPanel)chessBoard.getComponent( 51 );
-        WhitePawnPanel.add( WhitePawnPiece);
-        WhitePawnPiece = new JLabel( WhitePawn);
+        WhitePawnPanel.add( WhitePawnPiece.getJLabel());
+        WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
         WhitePawnPanel = (JPanel)chessBoard.getComponent( 52 );
-        WhitePawnPanel.add( WhitePawnPiece);
-        WhitePawnPiece = new JLabel( WhitePawn);
+        WhitePawnPanel.add( WhitePawnPiece.getJLabel());
+        WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
         WhitePawnPanel = (JPanel)chessBoard.getComponent( 53 );
-        WhitePawnPanel.add( WhitePawnPiece);
-        WhitePawnPiece = new JLabel( WhitePawn);
+        WhitePawnPanel.add( WhitePawnPiece.getJLabel());
+        WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
         WhitePawnPanel = (JPanel)chessBoard.getComponent( 54 );
-        WhitePawnPanel.add( WhitePawnPiece);
-        WhitePawnPiece = new JLabel( WhitePawn);
+        WhitePawnPanel.add( WhitePawnPiece.getJLabel());
+        WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
         WhitePawnPanel = (JPanel)chessBoard.getComponent( 55 );
-        WhitePawnPanel.add( WhitePawnPiece);
+        WhitePawnPanel.add( WhitePawnPiece.getJLabel());
         //White Queen
         ImageIcon WhiteQueen = new ImageIcon("./Pieces/WhiteQueen.png"); 
-        JLabel WhiteQueenPiece = new JLabel(WhiteQueen);
+        Pieces WhiteQueenPiece = new Pieces(new JLabel(WhiteQueen));
         JPanel WhiteQueenPanel = (JPanel)chessBoard.getComponent( 59 );
-        WhiteQueenPanel.add(WhiteQueenPiece);
+        WhiteQueenPanel.add(WhiteQueenPiece.getJLabel());
         //White King
         ImageIcon WhiteKing = new ImageIcon("./Pieces/WhiteKing.png"); 
-        JLabel WhiteKingPiece = new JLabel(WhiteKing);
+        Pieces WhiteKingPiece = new Pieces(new JLabel(WhiteKing));
         JPanel WhiteKingPanel = (JPanel)chessBoard.getComponent( 60 );
-        WhiteKingPanel.add(WhiteKingPiece);
+        WhiteKingPanel.add(WhiteKingPiece.getJLabel());
         //White Bishop
         ImageIcon WhiteBishop = new ImageIcon("./Pieces/WhiteBishop.png"); 
-        JLabel WhiteBishopPiece = new JLabel(WhiteBishop);
+        Pieces WhiteBishopPiece = new Pieces(new JLabel(WhiteBishop));
         JPanel WhiteBishopPanel = (JPanel)chessBoard.getComponent( 58 );
-        WhiteBishopPanel.add(WhiteBishopPiece);
-        WhiteBishopPiece = new JLabel(WhiteBishop);
+        WhiteBishopPanel.add(WhiteBishopPiece.getJLabel());
+        WhiteBishopPiece = new Pieces(new JLabel(WhiteBishop));
         WhiteBishopPanel = (JPanel)chessBoard.getComponent( 61 );
-        WhiteBishopPanel.add(WhiteBishopPiece);
+        WhiteBishopPanel.add(WhiteBishopPiece.getJLabel());
         
         //Black Rook
         ImageIcon BlackRook = new ImageIcon("./Pieces/BlackRook.png"); 
-        JLabel BlackRookPiece = new JLabel(BlackRook);
+        Pieces BlackRookPiece = new Pieces(new JLabel(BlackRook));
         JPanel BlackRookPanel = (JPanel)chessBoard.getComponent( 0 );
-        BlackRookPanel.add(BlackRookPiece);
-        BlackRookPiece = new JLabel(BlackRook);
+        BlackRookPanel.add(BlackRookPiece.getJLabel());
+        BlackRookPiece = new Pieces(new JLabel(BlackRook));
         BlackRookPanel = (JPanel)chessBoard.getComponent( 7 );
-        BlackRookPanel.add(BlackRookPiece);
+        BlackRookPanel.add(BlackRookPiece.getJLabel());
         //Black Knight
         ImageIcon BlackKnight = new ImageIcon("./Pieces/BlackKnight.png"); 
-        JLabel BlackKnightPiece = new JLabel(BlackKnight);
+        Pieces BlackKnightPiece = new Pieces(new JLabel(BlackKnight));
         JPanel BlackKnightPanel = (JPanel)chessBoard.getComponent( 1 );
-        BlackKnightPanel.add(BlackKnightPiece);
-        BlackKnightPiece = new JLabel(BlackKnight);
+        BlackKnightPanel.add(BlackKnightPiece.getJLabel());
+        BlackKnightPiece = new Pieces(new JLabel(BlackKnight));
         BlackKnightPanel = (JPanel)chessBoard.getComponent( 6 );
-        BlackKnightPanel.add(BlackKnightPiece);
+        BlackKnightPanel.add(BlackKnightPiece.getJLabel());
         //Black Pawns
          ImageIcon BlackPawn = new ImageIcon("./Pieces/BlackPawn.png"); 
-        JLabel  BlackPawnPiece = new JLabel( BlackPawn);
+        Pieces BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
         JPanel BlackPawnPanel = (JPanel)chessBoard.getComponent( 8 );
-        BlackPawnPanel.add( BlackPawnPiece);
-        BlackPawnPiece = new JLabel( BlackPawn);
+        BlackPawnPanel.add( BlackPawnPiece.getJLabel());
+        BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
         BlackPawnPanel = (JPanel)chessBoard.getComponent( 9 );
-        BlackPawnPanel.add( BlackPawnPiece);
-        BlackPawnPiece = new JLabel( BlackPawn);
+        BlackPawnPanel.add( BlackPawnPiece.getJLabel());
+        BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
         BlackPawnPanel = (JPanel)chessBoard.getComponent( 10 );
-        BlackPawnPanel.add( BlackPawnPiece);
-        BlackPawnPiece = new JLabel( BlackPawn);
+        BlackPawnPanel.add( BlackPawnPiece.getJLabel());
+        BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
         BlackPawnPanel = (JPanel)chessBoard.getComponent( 11 );
-        BlackPawnPanel.add( BlackPawnPiece);
-        BlackPawnPiece = new JLabel( BlackPawn);
+        BlackPawnPanel.add( BlackPawnPiece.getJLabel());
+        BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
         BlackPawnPanel = (JPanel)chessBoard.getComponent( 12 );
-        BlackPawnPanel.add( BlackPawnPiece);
-        BlackPawnPiece = new JLabel( BlackPawn);
+        BlackPawnPanel.add( BlackPawnPiece.getJLabel());
+        BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
         BlackPawnPanel = (JPanel)chessBoard.getComponent( 13 );
-        BlackPawnPanel.add( BlackPawnPiece);
-        BlackPawnPiece = new JLabel( BlackPawn);
+        BlackPawnPanel.add( BlackPawnPiece.getJLabel());
+        BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
         BlackPawnPanel = (JPanel)chessBoard.getComponent( 14 );
-        BlackPawnPanel.add( BlackPawnPiece);
-        BlackPawnPiece = new JLabel( BlackPawn);
+        BlackPawnPanel.add( BlackPawnPiece.getJLabel());
+        BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
         BlackPawnPanel = (JPanel)chessBoard.getComponent( 15 );
-        BlackPawnPanel.add( BlackPawnPiece);
+        BlackPawnPanel.add( BlackPawnPiece.getJLabel());
         //Black Queen
         ImageIcon BlackQueen = new ImageIcon("./Pieces/BlackQueen.png"); 
-        JLabel BlackQueenPiece = new JLabel(BlackQueen);
+        Pieces BlackQueenPiece = new Pieces(new JLabel(BlackQueen));
         JPanel BlackQueenPanel = (JPanel)chessBoard.getComponent( 3 );
-        BlackQueenPanel.add(BlackQueenPiece);
+        BlackQueenPanel.add(BlackQueenPiece.getJLabel());
         //Black King
         ImageIcon BlackKing = new ImageIcon("./Pieces/BlackKing.png"); 
-        JLabel BlackKingPiece = new JLabel(BlackKing);
+        Pieces BlackKingPiece = new Pieces(new JLabel(BlackKing));
         JPanel BlackKingPanel = (JPanel)chessBoard.getComponent( 4 );
-        BlackKingPanel.add(BlackKingPiece);
+        BlackKingPanel.add(BlackKingPiece.getJLabel());
         //Black Bishop
         ImageIcon BlackBishop = new ImageIcon("./Pieces/BlackBishop.png"); 
-        JLabel BlackBishopPiece = new JLabel(BlackBishop);
+        Pieces BlackBishopPiece = new Pieces(new JLabel(BlackBishop));
         JPanel BlackBishopPanel = (JPanel)chessBoard.getComponent( 2 );
-        BlackBishopPanel.add(BlackBishopPiece);
-        BlackBishopPiece = new JLabel(BlackBishop);
+        BlackBishopPanel.add(BlackBishopPiece.getJLabel());
+        BlackBishopPiece = new Pieces(new JLabel(BlackBishop));
         BlackBishopPanel = (JPanel)chessBoard.getComponent( 5 );
-        BlackBishopPanel.add(BlackBishopPiece);
+        BlackBishopPanel.add(BlackBishopPiece.getJLabel());
     }
 
     //dragging selected piece
@@ -209,6 +209,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         y = Math.max(y, 0);
 
         chessPiece.setLocation(x, y);
+        System.out.println(chessPiece.getIcon().toString());
      }
 
     
