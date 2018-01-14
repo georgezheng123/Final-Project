@@ -3,7 +3,7 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
-public class Chessboard extends JFrame
+public class Chessboard extends JFrame implements MouseListener, MouseMotionListener
 {
     JLayeredPane newPane;
     JPanel chessBoard;
@@ -19,6 +19,8 @@ public class Chessboard extends JFrame
 
         newPane = new JLayeredPane();
         newPane.setPreferredSize( boardSize );
+        newPane.addMouseListener( this );
+        newPane.addMouseMotionListener( this );
         getContentPane().add(newPane);
 
         // making a new JPanel
@@ -169,12 +171,99 @@ public class Chessboard extends JFrame
         BlackBishopPanel.add(BlackBishopPiece);
     }
 
+    //dragging selected piece
+    public void mousePressed(MouseEvent e)
+    {
+        chessPiece = null;
+        Component c =  chessBoard.findComponentAt(e.getX(), e.getY());
 
+        if (c instanceof JPanel) return;
+
+        Point parentLocation = c.getParent().getLocation();
+        moveX = parentLocation.x - e.getX();
+        moveY = parentLocation.y - e.getY();
+        chessPiece = (JLabel)c;
+        chessPiece.setLocation(e.getX() + moveX, e.getY() + moveY);
+
+        newPane.add(chessPiece, JLayeredPane.DRAG_LAYER);
+        newPane.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+    }
+
+    /*
+    **  Move the chess piece around
+    */
+    public void mouseDragged(MouseEvent me)
+    {
+        if (chessPiece == null) return;
+
+        //  The drag location should be within the bounds of the chess board
+
+        int x = me.getX() + moveX;
+        int xMax = newPane.getWidth() - chessPiece.getWidth();
+        x = Math.min(x, xMax);
+        x = Math.max(x, 0);
+
+        int y = me.getY() + moveY;
+        int yMax = newPane.getHeight() - chessPiece.getHeight();
+        y = Math.min(y, yMax);
+        y = Math.max(y, 0);
+
+        chessPiece.setLocation(x, y);
+     }
+
+    
+    //MOUSE RELEASED
+    public void mouseReleased(MouseEvent e)
+    {
+        newPane.setCursor(null);
+
+        if (chessPiece == null) return;
+
+       // gets rid of the chesspiece
+
+        chessPiece.setVisible(false);
+        newPane.remove(chessPiece);
+        chessPiece.setVisible(true);
+
+        // makes sure that the chess piece is within the board
+
+        int xMax = newPane.getWidth() - chessPiece.getWidth();
+        int x = Math.min(e.getX(), xMax);
+        x = Math.max(x, 0);
+
+        int yMax = newPane.getHeight() - chessPiece.getHeight();
+        int y = Math.min(e.getY(), yMax);
+        y = Math.max(y, 0);
+
+        Component c =  chessBoard.findComponentAt(x, y);
+
+        if (c instanceof JLabel)
+        {
+            Container parent = c.getParent();
+            parent.remove(0);
+            parent.add( chessPiece );
+            parent.validate();
+        }
+        else
+        {
+            Container parent = (Container)c;
+            parent.add( chessPiece );
+            parent.validate();
+        }
+    }
+
+    public void mouseClicked(MouseEvent e) {}
+    public void mouseMoved(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {}
 
     public static void main(String[] args)
     {
         JFrame frame = new Chessboard();
         frame.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        frame.setResizable( false );
+        frame.pack();
+        frame.setLocationRelativeTo( null );
         frame.setVisible(true);
      }
 }
