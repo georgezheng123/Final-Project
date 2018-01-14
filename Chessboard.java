@@ -3,7 +3,7 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
-public class Chessboard extends JFrame implements MouseListener
+public class Chessboard extends JFrame implements MouseListener, MouseMotionListener
 {
     JLayeredPane newPane;
     JPanel chessBoard;
@@ -20,6 +20,7 @@ public class Chessboard extends JFrame implements MouseListener
         newPane = new JLayeredPane();
         newPane.setPreferredSize( boardSize );
         newPane.addMouseListener( this );
+        newPane.addMouseMotionListener( this );
         getContentPane().add(newPane);
 
         // making a new JPanel
@@ -188,8 +189,29 @@ public class Chessboard extends JFrame implements MouseListener
         newPane.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
     }
 
+    /*
+    **  Move the chess piece around
+    */
+    public void mouseDragged(MouseEvent me)
+    {
+        if (chessPiece == null) return;
+
+        //  The drag location should be within the bounds of the chess board
+
+        int x = me.getX() + moveX;
+        int xMax = newPane.getWidth() - chessPiece.getWidth();
+        x = Math.min(x, xMax);
+        x = Math.max(x, 0);
+
+        int y = me.getY() + moveY;
+        int yMax = newPane.getHeight() - chessPiece.getHeight();
+        y = Math.min(y, yMax);
+        y = Math.max(y, 0);
+
+        chessPiece.setLocation(x, y);
+     }
+
     
-   
     //MOUSE RELEASED
     public void mouseReleased(MouseEvent e)
     {
@@ -229,7 +251,6 @@ public class Chessboard extends JFrame implements MouseListener
             parent.validate();
         }
     }
-    
 
     public void mouseClicked(MouseEvent e) {}
     public void mouseMoved(MouseEvent e) {}
