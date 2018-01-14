@@ -1,21 +1,21 @@
 import javax.swing.*; 
 import java.util.ArrayList; 
-public class Pieces { 
+public class Pieces extends JLabel{ 
 	private Position position; 
 	private int color; 
-	private JLabel getLabel; 
-	private JLabel setLabel; 
+	private JLabel label;
 	public Pieces(Position coordinate, int colors){ 
 		position = coordinate; color = colors; 
 	} 
 	public JLabel getJLabel(){ 
-		return getLabel; 
+		return label; 
 	} 
-	public JLabel setJLabel(){ 
-		return setLabel; 
-	} 
-	public Pieces(int x, int y, int colors){ 
-		position = new Position(x,y); color = colors; 
+	public JLabel setJLabel(JLabel newLabel){ 
+		label = newLabel; 
+		return label;
+	}
+	public Pieces(JLabel argument){ 
+		label = argument;
 	} 
 	public Position getPos(){ 
 		return position; 
