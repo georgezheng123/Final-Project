@@ -169,6 +169,8 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         BlackBishopPiece = new JLabel(BlackBishop);
         BlackBishopPanel = (JPanel)chessBoard.getComponent( 5 );
         BlackBishopPanel.add(BlackBishopPiece);
+
+        
     }
 
     //dragging selected piece
@@ -182,7 +184,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         Point parentLocation = c.getParent().getLocation();
         moveX = parentLocation.x - e.getX();
         moveY = parentLocation.y - e.getY();
-        chessPiece = (JLabel)c;
+        chessPiece = (JLabel) c;
         chessPiece.setLocation(e.getX() + moveX, e.getY() + moveY);
 
         newPane.add(chessPiece, JLayeredPane.DRAG_LAYER);
@@ -209,6 +211,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         y = Math.max(y, 0);
 
         chessPiece.setLocation(x, y);
+        System.out.println(chessPiece.getIcon().toString());
      }
 
     
