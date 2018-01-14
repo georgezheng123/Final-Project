@@ -168,6 +168,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         BlackBishopPanel.add(BlackBishopPiece.getJLabel());
         BlackBishopPiece = new Pieces(new JLabel(BlackBishop));
         BlackBishopPanel = (JPanel)chessBoard.getComponent( 5 );
+
         BlackBishopPanel.add(BlackBishopPiece.getJLabel());
     }
 
@@ -188,6 +189,31 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         newPane.add(chessPiece, JLayeredPane.DRAG_LAYER);
         newPane.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
     }
+
+
+        BlackBishopPanel.add(BlackBishopPiece);
+
+        
+    }
+
+    //dragging selected piece
+    public void mousePressed(MouseEvent e)
+    {
+        chessPiece = null;
+        Component c =  chessBoard.findComponentAt(e.getX(), e.getY());
+
+        if (c instanceof JPanel) return;
+
+        Point parentLocation = c.getParent().getLocation();
+        moveX = parentLocation.x - e.getX();
+        moveY = parentLocation.y - e.getY();
+        chessPiece = (JLabel) c;
+        chessPiece.setLocation(e.getX() + moveX, e.getY() + moveY);
+
+        newPane.add(chessPiece, JLayeredPane.DRAG_LAYER);
+        newPane.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+    }
+
 
     /*
     **  Move the chess piece around
