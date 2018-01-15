@@ -272,18 +272,28 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         else //move
         {
             Container parent = (Container)c;
-            System.out.println(parent.getLocation().getX());
-            System.out.println(parent.getLocation().getY());
+            int[] coords = getCoord(parent.getLocation());
+            System.out.println(coords[0] + " " + coords[1]);
+            String pieceType = getImageName(chessPiece);
+            System.out.println(pieceType);
+            System.out.println();
             parent.add( chessPiece );
             parent.validate();
         }
     }
 
-    public static String getImageName(JLabel label){
+    public static String getImageName(JLabel label){//gets the name of the image file
         Icon icon = label.getIcon();
         String absolutePath = icon.toString().replaceFirst("file:/", "");
         absolutePath = absolutePath.replaceAll("%20", " ");
        return absolutePath;
+    }
+
+    public static int[] getCoord(Point p){//gets the coordinates to be moved to
+        int[] arr = new int[2];
+        arr[0] = (int) p.getX() / 75 ;
+        arr[1] = (int) p.getY() / 75 ;
+        return arr;
     }
 
 
