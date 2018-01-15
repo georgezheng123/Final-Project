@@ -191,10 +191,9 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     }
 
 
-        BlackBishopPanel.add(BlackBishopPiece);
 
         
-    }
+    
 
     //dragging selected piece
     public void mousePressed(MouseEvent e)
