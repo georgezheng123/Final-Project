@@ -39,18 +39,18 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             {
                 JPanel square = new JPanel( new BorderLayout() );
                 if((row+col) % 2 == 0){
-                	square.setBackground(Color.red);
+                    square.setBackground(Color.red);
                 }
                 else{
-                	square.setBackground(Color.white);
+                    square.setBackground(Color.white);
                 }
                 chessBoard.add( square );
             }
         }
 
-		//White Rook
+        //White Rook
          ImageIcon WhiteRook = new ImageIcon("./Pieces/WhiteRook.png"); 
-		Pieces WhiteRookPiece = new Pieces(new JLabel(WhiteRook));
+        Pieces WhiteRookPiece = new Pieces(new JLabel(WhiteRook));
           JPanel WhiteRookPanel = (JPanel)chessBoard.getComponent( 56 );
          WhiteRookPanel.add(WhiteRookPiece.getJLabel());
          WhiteRookPiece = new Pieces(new JLabel(WhiteRook));
@@ -182,24 +182,6 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
 
     }
 
-    //dragging selected piece
-    public void mousePressed(MouseEvent e)
-    {
-        chessPiece = null;
-        Component c =  chessBoard.findComponentAt(e.getX(), e.getY());
-
-        if (c instanceof JPanel) return;
-
-        Point parentLocation = c.getParent().getLocation();
-        moveX = parentLocation.x - e.getX();
-        moveY = parentLocation.y - e.getY();
-        chessPiece = (JLabel)c;
-        chessPiece.setLocation(e.getX() + moveX, e.getY() + moveY);
-
-        newPane.add(chessPiece, JLayeredPane.DRAG_LAYER);
-        newPane.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
-    }
-
 
 
 
@@ -260,6 +242,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         chessPiece.setVisible(false);
         newPane.remove(chessPiece);
         chessPiece.setVisible(true);
+        System.out.println(chessPiece);
 
         // makes sure that the chess piece is within the board
 
@@ -272,15 +255,19 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         y = Math.max(y, 0);
 
         Component c =  chessBoard.findComponentAt(x, y);
+        System.out.println(c);
+        System.out.println();
 
-        if (c instanceof JLabel)
+
+
+        if (c instanceof JLabel) //capture
         {
             Container parent = c.getParent();
             parent.remove(0);
             parent.add( chessPiece );
             parent.validate();
         }
-        else
+        else //move
         {
             Container parent = (Container)c;
             parent.add( chessPiece );

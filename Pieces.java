@@ -5,6 +5,7 @@ public class Pieces extends JLabel{
 	private Position position; 
 	private int color; 
 	private JLabel label;
+	
 	public Pieces(Position coordinate, int colors){ 
 		position = coordinate; color = colors; 
 	} 
