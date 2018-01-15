@@ -295,6 +295,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         arr[1] = (int) p.getY() / 75 ;
         return arr;
     }
+    //to be done: get current coordinates, movement logic, capture logic
 
 
 
