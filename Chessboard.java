@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
+import java.io.*;
 
 public class Chessboard extends JFrame implements MouseListener, MouseMotionListener
 {
@@ -242,7 +243,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         chessPiece.setVisible(false);
         newPane.remove(chessPiece);
         chessPiece.setVisible(true);
-        System.out.println(chessPiece);
+        System.out.println(getImageName(chessPiece));
 
         // makes sure that the chess piece is within the board
 
@@ -274,6 +275,18 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             parent.validate();
         }
     }
+
+    public static String getImageName(JLabel label){
+        Icon icon = label.getIcon();
+        ImageIcon current = new ImageIcon(icon); 
+        ImageIcon BlackBishop = new ImageIcon("./Pieces/BlackBishop.png"); 
+        if (current.equals(BlackBishop)){
+             return "hiefwef";
+        }
+        return "";
+    }
+
+    
 
     public void mouseClicked(MouseEvent e) {}
     public void mouseMoved(MouseEvent e) {}
