@@ -13,12 +13,15 @@ public class Pieces extends JLabel{
 	} 
 
 	public Pieces(){ 
+		setupMap();
 	} 
 
 	public void setupMap(){
 		HashMap<String, Integer> pieceCon = new HashMap<>();
-		String[] stuff = new String[] {"str"};
-		pieceCon.put("Pawn",0);
+		String[] stuff = new String[] {"Pawn","Knight","Bishop","Rook","Queen","King"};
+		for (int i=0; i<stuff.length; i++){
+			pieceCon.put(stuff[i],i);
+		}
 	}
 
 	public JLabel getJLabel(){ 
