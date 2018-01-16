@@ -19,12 +19,10 @@ public class Pieces extends JLabel{
 	public Pieces(JLabel argument){ 
 		label = argument;
 	} 
-	public Position getPos(){ 
-		return position; 
-	} 
-	public void setPos(Position coordinate){ 
-		position = coordinate; 
-	} 
+
+
+
+
 	public String toString(){ 
 		return " "; 
 	} 

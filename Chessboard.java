@@ -10,8 +10,10 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     JLayeredPane newPane;
     JPanel chessBoard;
     JLabel chessPiece;
-    int moveX;
     int moveY;
+    int moveX;
+    int[] from;
+    int[] to;
 
     public Chessboard()
     {
@@ -204,6 +206,11 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         chessPiece = (JLabel) c;
         chessPiece.setLocation(e.getX() + moveX, e.getY() + moveY);
 
+
+        int[] coords = getCoord(chessPiece.getLocation());
+        from = coords;
+
+
         newPane.add(chessPiece, JLayeredPane.DRAG_LAYER);
         newPane.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
     }
@@ -273,11 +280,16 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         {
             Container parent = (Container)c;
             int[] coords = getCoord(parent.getLocation());
-            System.out.println(coords[0] + " " + coords[1]);
+            to = coords;
+
+            System.out.println(from[0] + " " + from[1]);
+            System.out.println(to[0] + " " + to[1]);
+
             String pieceType = getImageName(chessPiece);
             System.out.println(pieceType);
             System.out.println();
             parent.add( chessPiece );
+
             parent.validate();
         }
     }
@@ -286,7 +298,9 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         Icon icon = label.getIcon();
         String absolutePath = icon.toString().replaceFirst("file:/", "");
         absolutePath = absolutePath.replaceAll("%20", " ");
-       return absolutePath;
+        absolutePath = absolutePath.substring(9,absolutePath.length());
+        absolutePath = absolutePath.substring(0,absolutePath.indexOf('.'));
+        return absolutePath;
     }
 
     public static int[] getCoord(Point p){//gets the coordinates to be moved to
