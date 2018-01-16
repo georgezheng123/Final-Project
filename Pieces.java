@@ -6,7 +6,7 @@ public class Pieces extends JLabel{
 	private Position position; 
 	private int color; 
 	private JLabel label;
-	private 
+	 
 	
 	public Pieces(Position coordinate, int colors){ 
 		position = coordinate; color = colors; 
@@ -17,7 +17,8 @@ public class Pieces extends JLabel{
 
 	public void setupMap(){
 		HashMap<String, Integer> pieceCon = new HashMap<>();
-		pieceCon.put("Chaitanya");
+		String[] stuff = new String[] {"str"};
+		pieceCon.put("Pawn",0);
 	}
 
 	public JLabel getJLabel(){ 
