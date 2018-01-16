@@ -300,7 +300,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         absolutePath = absolutePath.replaceAll("%20", " ");
         absolutePath = absolutePath.substring(9,absolutePath.length());
         absolutePath = absolutePath.substring(0,absolutePath.indexOf('.'));
-        return absolutePath;
+        return absolutePath.replace("White","").replace("Black","");
     }
 
     public static int[] getCoord(Point p){//gets the coordinates to be moved to
