@@ -10,7 +10,7 @@ public class Bishop{
 		double deltaX = fromX - toX;
 		double deltaY = fromY - toY;
 
-		return deltaX == deltaY && deltaX != 0;
+		return Math.abs(deltaX) == Math.abs(deltaY) && deltaX != 0;
 	}
 
 
