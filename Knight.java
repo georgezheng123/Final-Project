@@ -14,8 +14,8 @@ public class Knight extends Pieces{
 		double deltaX = Math.abs(fromX - toX);
 		double deltaY = Math.abs(fromY - toY);
 
-		Boolean sleepingL = deltaX == 2.0 && deltaY == 1.0; 
-		Boolean upwardsL = deltaX == 1.0 && deltaY == 2.0;
+		Boolean sleepingL = (deltaX == 2.0) && (deltaY == 1.0); 
+		Boolean upwardsL = (deltaX == 1.0) && (deltaY == 2.0);
 
 		return sleepingL || upwardsL;
 	}
