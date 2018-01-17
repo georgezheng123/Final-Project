@@ -29,6 +29,7 @@ public class Pieces extends JLabel{
 		pieceCon = setupMap();
 		int id = pieceCon.get(pieceName);
 		if (id == 5){
+			System.out.println("will validate king move");
 			return King.validate(from, to);
 		}
 		return false;

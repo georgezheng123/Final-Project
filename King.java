@@ -9,7 +9,9 @@ public class King extends Pieces{
 		int fromY = from[1];
 		int toX = to[0];
 		int toY = to[1];
-		return Math.sqrt(Math.pow(Math.abs((toX - fromX)),2)) + Math.pow(Math.abs((toY - fromY)), 2) != Math.sqrt(2);
+		int dist = Math.hypot((double) toX, (double) fromX) + Math.hypot((double) toY, (double) fromY);
+		
+		return dist == Math.sqrt(2);
 	}
 
 
