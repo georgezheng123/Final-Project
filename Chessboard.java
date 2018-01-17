@@ -274,10 +274,13 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         if (c instanceof JLabel) //capture
         {//write type function
          //cannot capture of same type
-            Container parent = c.getParent();
-            parent.remove(0);
             //Point parentLocation = c.getParent().getLocation();
             //System.out.println(parentLocation);
+            Boolean isDiffColor = sameColor(chessPiece, (JLabel) c);
+
+            Container parent = c.getParent();
+            parent.remove(0);
+            
             parent.add( chessPiece );
             parent.validate();
         }
@@ -299,7 +302,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
                 parent.validate();
             }else{//invalid move!!
                 JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
-                panel.add( chessPiece );
+                panel.add(chessPiece);
             }
             
         }
@@ -323,7 +326,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         return absolutePath.substring(6);
     }
 
-    public static String sameColor(JLabel label, JLabel other){//gets the name of the image file
+    public static Boolean sameColor(JLabel label, JLabel other){//gets the name of the image file
         return getColor(label).equals(getColor(other));
     }
 
