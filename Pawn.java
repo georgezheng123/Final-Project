@@ -38,7 +38,7 @@ public class Pawn extends Pieces{
 			offset = -1.0;
 		}
 
-		return deltaX == 0.0 && deltaY == offset;
+		return true;
 	}
 
 	public String toString(){
