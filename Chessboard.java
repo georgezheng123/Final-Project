@@ -271,8 +271,11 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             
             if (isValidMove && isDiffColor){
                 //System.out.println(parent);
-                parent.remove(0);
-                parent.add( chessPiece );
+                // parent.remove(0);
+                // parent.add( chessPiece );
+                JPanel panel = (JPanel)chessBoard.getComponent( to[0] + to[1]*8);
+                panel.remove(0);
+                panel.add(chessPiece);
                 parent.validate();
             }else{//invalid move!!
                 JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
