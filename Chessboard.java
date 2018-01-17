@@ -298,10 +298,8 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
                 parent.validate();
                 System.out.println("valiated");
             }else{//invalid move!!
-                Component b =  chessBoard.findComponentAt(from[0], from[1]);
-                parent = (Container)b;
-                parent.add(chessPiece);
-                parent.validate();
+                JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
+                panel.add( chessPiece );
             }
             
         }
