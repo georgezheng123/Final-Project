@@ -37,7 +37,6 @@ public class Pieces extends JLabel{
 			
 		}
 		if (id == 2){
-			System.out.println("validating bis");
 			return Bishop.validate(color,from, to);
 		}
 		if (id == 3){

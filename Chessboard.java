@@ -129,27 +129,12 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         Pieces BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
         JPanel BlackPawnPanel = (JPanel)chessBoard.getComponent( 8 );
         BlackPawnPanel.add( BlackPawnPiece.getJLabel());
-        BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
-        BlackPawnPanel = (JPanel)chessBoard.getComponent( 9 );
-        BlackPawnPanel.add( BlackPawnPiece.getJLabel());
-        BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
-        BlackPawnPanel = (JPanel)chessBoard.getComponent( 10 );
-        BlackPawnPanel.add( BlackPawnPiece.getJLabel());
-        BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
-        BlackPawnPanel = (JPanel)chessBoard.getComponent( 11 );
-        BlackPawnPanel.add( BlackPawnPiece.getJLabel());
-        BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
-        BlackPawnPanel = (JPanel)chessBoard.getComponent( 12 );
-        BlackPawnPanel.add( BlackPawnPiece.getJLabel());
-        BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
-        BlackPawnPanel = (JPanel)chessBoard.getComponent( 13 );
-        BlackPawnPanel.add( BlackPawnPiece.getJLabel());
-        BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
-        BlackPawnPanel = (JPanel)chessBoard.getComponent( 14 );
-        BlackPawnPanel.add( BlackPawnPiece.getJLabel());
-        BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
-        BlackPawnPanel = (JPanel)chessBoard.getComponent( 15 );
-        BlackPawnPanel.add( BlackPawnPiece.getJLabel());
+
+        for (int i=9; i<16; i++){
+            BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
+            BlackPawnPanel = (JPanel)chessBoard.getComponent( 9 );
+            BlackPawnPanel.add( BlackPawnPiece.getJLabel());
+        }
 
         //Black Queen
         ImageIcon BlackQueen = new ImageIcon("./Pieces/BlackQueen.png"); 
