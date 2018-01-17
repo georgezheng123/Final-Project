@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class King extends Pieces{
 
-	public static boolean validate(int[] from, int[] to){
+	public static boolean validate(String color, int[] from, int[] to){
 		int fromX = from[0];
 		int fromY = from[1];
 		int toX = to[0];
@@ -14,7 +14,6 @@ public class King extends Pieces{
 		double deltaY = fromY - toY;
 
 		double dist = Math.hypot(deltaX, deltaY);
-		System.out.println(dist);
 		return dist == 1.0 || dist == Math.sqrt(2);
 	}
 

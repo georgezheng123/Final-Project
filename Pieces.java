@@ -24,15 +24,15 @@ public class Pieces extends JLabel{
 		return pieceCon;
 	}
 
-	public static boolean validates(String pieceName, int[] from, int[] to){
+	public static boolean validates(String color, String pieceName, int[] from, int[] to){
 		HashMap<String, Integer> pieceCon; 
 		pieceCon = setupMap();
 		int id = pieceCon.get(pieceName);
 		if (id == 1){
-			return Pawn.validate(from, to);
+			return Pawn.validate(color,from, to);
 		}
 		if (id == 5){
-			return King.validate(from, to);
+			return King.validate(color,from, to);
 		}
 		return false;
 	}
