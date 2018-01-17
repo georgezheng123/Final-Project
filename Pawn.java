@@ -42,7 +42,7 @@ public class Pawn extends Pieces{
 	}
 
 	public String toString(){
-		return "";
+		return "pawn";
 	}
 
 }
