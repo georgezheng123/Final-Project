@@ -28,6 +28,9 @@ public class Pieces extends JLabel{
 		HashMap<String, Integer> pieceCon; 
 		pieceCon = setupMap();
 		int id = pieceCon.get(pieceName);
+		if (id == 1){
+			return Pawn.validate(from, to);
+		}
 		if (id == 5){
 			return King.validate(from, to);
 		}
