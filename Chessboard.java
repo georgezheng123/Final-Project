@@ -276,13 +276,17 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
          //cannot capture of same type
             //Point parentLocation = c.getParent().getLocation();
             //System.out.println(parentLocation);
-            Boolean isDiffColor = sameColor(chessPiece, (JLabel) c);
-
-            Container parent = c.getParent();
-            parent.remove(0);
-            
-            parent.add( chessPiece );
-            parent.validate();
+            Boolean isDiffColor = diffColor(chessPiece, (JLabel) c);
+            System.out.println(isDiffColor);
+            if (isDiffColor){
+                Container parent = c.getParent();
+                parent.remove(0);
+                parent.add( chessPiece );
+                parent.validate();
+            }else{//invalid move!!
+                JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
+                panel.add(chessPiece);
+            }
         }
         else //move
         {
@@ -323,11 +327,11 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         absolutePath = absolutePath.replaceAll("%20", " ");
         absolutePath = absolutePath.substring(9,absolutePath.length());
         absolutePath = absolutePath.substring(0,absolutePath.indexOf('.'));
-        return absolutePath.substring(6);
+        return absolutePath.substring(0,5);
     }
 
-    public static Boolean sameColor(JLabel label, JLabel other){//gets the name of the image file
-        return getColor(label).equals(getColor(other));
+    public static Boolean diffColor(JLabel label, JLabel other){//gets the name of the image file
+        return !getColor(label).equals(getColor(other));
     }
 
     public static int[] getCoord(Point p){//gets the coordinates to be moved to
