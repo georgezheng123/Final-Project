@@ -201,6 +201,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         chessPiece = null;
         Component c =  chessBoard.findComponentAt(e.getX(), e.getY());
 
+
         if (c instanceof JPanel) return;
 
         Point parentLocation = c.getParent().getLocation();
@@ -292,10 +293,15 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             System.out.println(pieceType);
             System.out.println();
 
-            if (validator.validate(pieceType, from, to)){
+            if (validator.validates(pieceType, from, to)){
                 parent.add(chessPiece);
                 parent.validate();
                 System.out.println("valiated");
+            }else{//invalid move!!
+                Component b =  chessBoard.findComponentAt(from[0], from[1]);
+                parent = (Container)b;
+                parent.add(chessPiece);
+                parent.validate();
             }
             
         }

@@ -24,7 +24,7 @@ public class Pieces extends JLabel{
 		return pieceCon;
 	}
 
-	public static boolean validate(String pieceName, int[] from, int[] to){
+	public static boolean validates(String pieceName, int[] from, int[] to){
 		HashMap<String, Integer> pieceCon; 
 		pieceCon = setupMap();
 		int id = pieceCon.get(pieceName);
