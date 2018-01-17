@@ -47,7 +47,7 @@ public class Pieces extends JLabel{
 	} 
 
 	public String toString(){ 
-		return " "; 
+		return "I am a validator"; 
 	} 
 }
 	

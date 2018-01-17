@@ -19,6 +19,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     public Chessboard()
     {
         Pieces validator = new Pieces();
+        this.validator = validator;
         Dimension boardSize = new Dimension(600, 600);
 
         //layered Pane so you can add MouseListener
@@ -291,12 +292,11 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             System.out.println(pieceType);
             System.out.println();
 
-            System.out.println(validator);
-
-            // if (validator.validate()){
-            //     parent.add( chessPiece );
-            //     parent.validate();
-            // }
+            if (validator.validate(pieceType, from, to)){
+                parent.add(chessPiece);
+                parent.validate();
+                System.out.println("valiated");
+            }
             
         }
     }
