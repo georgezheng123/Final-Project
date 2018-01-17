@@ -43,6 +43,9 @@ public class Pieces extends JLabel{
 		if (id == 3){
 			return Rook.validate(color,from, to);
 		}
+		if (id == 4){
+			return Queen.validate(color,from, to);
+		}
 		if (id == 5){
 			return King.validate(color,from, to);
 		}
