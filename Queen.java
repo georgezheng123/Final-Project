@@ -5,7 +5,7 @@ public class Queen extends Pieces{
 	
 	public static boolean validate(String color, int[] from, int[] to){
 
-		return Rook.validate(color, from, to) || Rook.validate(color, from, to);
+		return Rook.validate(color, from, to) || Bishop.validate(color, from, to);
 	}
 
 	public String toString(){
