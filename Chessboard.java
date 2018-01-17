@@ -272,7 +272,8 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
 
 
         if (c instanceof JLabel) //capture
-        {
+        {//write type function
+         //cannot capture of same type
             Container parent = c.getParent();
             parent.remove(0);
             //Point parentLocation = c.getParent().getLocation();
