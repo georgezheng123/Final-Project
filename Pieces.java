@@ -6,6 +6,7 @@ public class Pieces extends JLabel{
 	private Position position; 
 	private int color; 
 	private JLabel label;
+	private HashMap piece;
 	 
 	
 	public Pieces(Position coordinate, int colors){ 
@@ -22,7 +23,16 @@ public class Pieces extends JLabel{
 		for (int i=0; i<stuff.length; i++){
 			pieceCon.put(stuff[i],i);
 		}
+		this.piece = pieceCon;
 	}
+
+	public static boolean validate(String pieceName, int[] from, int[] to){
+		int id = pieceCon.get(pieceName);
+		if (id == 5){
+			return King.validate(from, to);
+		}
+	}
+
 
 	public JLabel getJLabel(){ 
 		return label; 

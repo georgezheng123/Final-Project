@@ -14,9 +14,11 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     int moveX;
     int[] from;
     int[] to;
+    Pieces validator;
 
     public Chessboard()
     {
+        Pieces validator = new Pieces();
         Dimension boardSize = new Dimension(600, 600);
 
         //layered Pane so you can add MouseListener

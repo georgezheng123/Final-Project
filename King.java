@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class King extends Pieces{
 
-	public King(int x, int y, int colors){
-		super(x,y,colors);
+	public static validate(int[] from, int[] to){
+		int fromX = from[0];
+		int fromY = from[0];
+		int toX = from[1];
+		int toY = from[1];
 	}
-	
-	public King(Position coordinate, int colors){
-		super(coordinate,colors);
-	}
+
 
 	public String toString(){
 		return "";
