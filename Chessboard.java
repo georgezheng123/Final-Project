@@ -268,7 +268,9 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
 
         Component c =  chessBoard.findComponentAt(x, y);
 
-
+        Container parent = (Container)c;
+            int[] coords = getCoord(parent.getLocation());
+            to = coords;
 
 
         if (c instanceof JLabel) //capture
@@ -276,10 +278,12 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
          //cannot capture of same type
             //Point parentLocation = c.getParent().getLocation();
             //System.out.println(parentLocation);
+
+
+
             Boolean isDiffColor = diffColor(chessPiece, (JLabel) c);
             System.out.println(isDiffColor);
             if (isDiffColor){
-                Container parent = c.getParent();
                 parent.remove(0);
                 parent.add( chessPiece );
                 parent.validate();
@@ -290,12 +294,9 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         }
         else //move
         {
-            Container parent = (Container)c;
-            int[] coords = getCoord(parent.getLocation());
-            to = coords;
 
-            System.out.println(from[0] + " " + from[1]);
-            System.out.println(to[0] + " " + to[1]);
+            // System.out.println(from[0] + " " + from[1]);
+            // System.out.println(to[0] + " " + to[1]);
 
             String pieceType = getImageName(chessPiece);
             System.out.println(pieceType);
