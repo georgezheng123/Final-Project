@@ -13,12 +13,15 @@ public class Pawn extends Pieces{
 		double deltaX = fromX - toX;
 		double deltaY = fromY - toY;
 
-		int offset = 1;
-		if (color.equals("White")){
-			offset = -1;
-		};
+		double offset = 1.0;
+		if (color.equals("Black")){
+			offset = -1.0;
+		}
 
-		return deltaX == 0 && deltaY == offset;
+		if (fromY == 6) return deltaX == 0.0 && (deltaY == offset || deltaY == 2.0);
+		if (fromY == 1) return deltaX == 0.0 && (deltaY == offset || deltaY == -2.0);
+
+		return deltaX == 0.0 && deltaY == offset;
 	}
 
 	public String toString(){
