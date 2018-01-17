@@ -9,9 +9,16 @@ public class King extends Pieces{
 		int fromY = from[1];
 		int toX = to[0];
 		int toY = to[1];
-		int dist = Math.hypot((double) toX, (double) fromX) + Math.hypot((double) toY, (double) fromY);
-		
-		return dist == Math.sqrt(2);
+		System.out.println(fromX);
+		System.out.println(fromY);
+		System.out.println(toX);
+		System.out.println(toY);
+		double deltaX = fromX - toX;
+		double deltaY = fromY - toY;
+
+		double dist = Math.hypot(deltaX, deltaY);
+		System.out.println(dist);
+		return dist == 1.0 || dist == Math.sqrt(2);
 	}
 
 
