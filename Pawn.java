@@ -24,6 +24,23 @@ public class Pawn extends Pieces{
 		return deltaX == 0.0 && deltaY == offset;
 	}
 
+	public static boolean pawnCaptureValidate(String color, int[] from, int[] to){
+		int fromX = from[0];
+		int fromY = from[1];
+		int toX = to[0];
+		int toY = to[1];
+
+		double deltaX = fromX - toX;
+		double deltaY = fromY - toY;
+
+		double offset = 1.0;
+		if (color.equals("Black")){
+			offset = -1.0;
+		}
+
+		return deltaX == 0.0 && deltaY == offset;
+	}
+
 	public String toString(){
 		return "";
 	}
