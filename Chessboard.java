@@ -290,9 +290,14 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             String pieceType = getImageName(chessPiece);
             System.out.println(pieceType);
             System.out.println();
-            parent.add( chessPiece );
 
-            parent.validate();
+            System.out.println(validator);
+
+            // if (validator.validate()){
+            //     parent.add( chessPiece );
+            //     parent.validate();
+            // }
+            
         }
     }
 
