@@ -78,27 +78,12 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         Pieces WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
         JPanel WhitePawnPanel = (JPanel)chessBoard.getComponent( 48 );
         WhitePawnPanel.add( WhitePawnPiece.getJLabel());
-        WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
-        WhitePawnPanel = (JPanel)chessBoard.getComponent( 49 );
-        WhitePawnPanel.add( WhitePawnPiece.getJLabel());
-        WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
-        WhitePawnPanel = (JPanel)chessBoard.getComponent( 50 );
-        WhitePawnPanel.add( WhitePawnPiece.getJLabel());
-        WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
-        WhitePawnPanel = (JPanel)chessBoard.getComponent( 51 );
-        WhitePawnPanel.add( WhitePawnPiece.getJLabel());
-        WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
-        WhitePawnPanel = (JPanel)chessBoard.getComponent( 52 );
-        WhitePawnPanel.add( WhitePawnPiece.getJLabel());
-        WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
-        WhitePawnPanel = (JPanel)chessBoard.getComponent( 53 );
-        WhitePawnPanel.add( WhitePawnPiece.getJLabel());
-        WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
-        WhitePawnPanel = (JPanel)chessBoard.getComponent( 54 );
-        WhitePawnPanel.add( WhitePawnPiece.getJLabel());
-        WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
-        WhitePawnPanel = (JPanel)chessBoard.getComponent( 55 );
-        WhitePawnPanel.add( WhitePawnPiece.getJLabel());
+
+        for (int i=49; i<56; i++){
+            WhitePawnPiece = new Pieces(new JLabel( WhitePawn));
+            WhitePawnPanel = (JPanel)chessBoard.getComponent(i);
+            WhitePawnPanel.add( WhitePawnPiece.getJLabel());
+        }
 
         //White Queen
         ImageIcon WhiteQueen = new ImageIcon("./Pieces/WhiteQueen.png"); 
@@ -284,8 +269,8 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
 
             Boolean isDiffColor = diffColor(chessPiece, (JLabel) c);
             Boolean isValidMove = validator.validates(pieceType, from, to);
-            System.out.println(isDiffColor);
-            if (isDiffColor){
+            System.out.println(isDiffColor && isValidMove);
+            if (isValidMove && isDiffColor){
                 parent.remove(0);
                 parent.add( chessPiece );
                 parent.validate();
