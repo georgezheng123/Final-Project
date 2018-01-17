@@ -132,7 +132,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
 
         for (int i=9; i<16; i++){
             BlackPawnPiece = new Pieces(new JLabel( BlackPawn));
-            BlackPawnPanel = (JPanel)chessBoard.getComponent( 9 );
+            BlackPawnPanel = (JPanel)chessBoard.getComponent(i);
             BlackPawnPanel.add( BlackPawnPiece.getJLabel());
         }
 
