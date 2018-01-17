@@ -4,12 +4,18 @@ import java.util.ArrayList;
 public class Pawn extends Pieces{
 	
 
-	public Pawn(int x, int y, int colors){
-		super(x,y,colors);
-	}
-	
-	public Pawn(Position coordinate, int colors){
-		super(coordinate,colors);
+	public static boolean validate(int[] from, int[] to){
+		int fromX = from[0];
+		int fromY = from[1];
+		int toX = to[0];
+		int toY = to[1];
+
+		double deltaX = fromX - toX;
+		double deltaY = fromY - toY;
+
+		double dist = Math.hypot(deltaX, deltaY);
+		System.out.println(dist);
+		return dist == 1.0 || dist == Math.sqrt(2);
 	}
 
 	public String toString(){
