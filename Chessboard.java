@@ -323,6 +323,10 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         return absolutePath.substring(6);
     }
 
+    public static String sameColor(JLabel label, JLabel other){//gets the name of the image file
+        return getColor(label).equals(getColor(other));
+    }
+
     public static int[] getCoord(Point p){//gets the coordinates to be moved to
         int[] arr = new int[2];
         arr[0] = (int) p.getX() / 75 ;
