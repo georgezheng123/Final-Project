@@ -3,12 +3,9 @@ import java.awt.*;
 import java.util.ArrayList;
 public class Queen extends Pieces{
 	
-	public Queen(int x, int y, int colors){
-		super(x,y,colors);
-	}
-	
-	public Queen(Position coordinate, int colors){
-		super(coordinate,colors);
+	public static boolean validate(String color, int[] from, int[] to){
+
+		return Rook.validate(color, from, to) || Rook.validate(color, from, to);
 	}
 
 	public String toString(){
