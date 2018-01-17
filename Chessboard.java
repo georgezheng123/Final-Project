@@ -296,7 +296,6 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             if (validator.validates(pieceType, from, to)){
                 parent.add(chessPiece);
                 parent.validate();
-                System.out.println("valiated");
             }else{//invalid move!!
                 JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
                 panel.add( chessPiece );

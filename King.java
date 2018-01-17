@@ -9,10 +9,7 @@ public class King extends Pieces{
 		int fromY = from[1];
 		int toX = to[0];
 		int toY = to[1];
-		System.out.println(fromX);
-		System.out.println(fromY);
-		System.out.println(toX);
-		System.out.println(toY);
+
 		double deltaX = fromX - toX;
 		double deltaY = fromY - toY;
 
