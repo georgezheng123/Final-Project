@@ -36,6 +36,9 @@ public class Pieces extends JLabel{
 			return Pawn.pawnCaptureValidate(color,from, to); 
 			
 		}
+		if (id == 2){
+			return Bishop.validate(color,from, to);
+		}
 		if (id == 3){
 			return Rook.validate(color,from, to);
 		}
