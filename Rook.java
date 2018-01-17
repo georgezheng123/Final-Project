@@ -3,12 +3,16 @@ import java.awt.*;
 import java.util.ArrayList;
 public class Rook extends Pieces{
 	
-	public Rook(int x, int y, int colors){
-		super(x,y,colors);
-	}
-	
-	public Rook(Position coordinate, int colors){
-		super(coordinate,colors);
+	public static boolean validate(String color, int[] from, int[] to){
+		int fromX = from[0];
+		int fromY = from[1];
+		int toX = to[0];
+		int toY = to[1];
+
+		double deltaX = fromX - toX;
+		double deltaY = fromY - toY;
+
+		return deltaX == 0.0 ^ deltaY == 0.0;
 	}
 
 	public String toString(){
