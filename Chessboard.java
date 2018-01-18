@@ -260,7 +260,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         to = coords;
         String pieceType = getImageName(chessPiece);
 
-
+        getBoardState();
         if (c instanceof JLabel) //capture
         {//write type function
          //cannot capture of same type
@@ -290,7 +290,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
 
             // System.out.println(from[0] + " " + from[1]);
             // System.out.println(to[0] + " " + to[1]);
-            getBoardState();
+            
             System.out.println(pieceType);
             System.out.println();
 
@@ -303,6 +303,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             }
             
         }
+        
     }
 
     public static String getImageName(JLabel label){//gets the name of the image file
@@ -337,26 +338,26 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
 
 public int[][] getBoardState(){
     int[][] state = new int[8][8];
-    Component[] cc = chessBoard.getComponents();
-    for (Component i: cc){
-        System.out.println(i);
-    }
+    // Component[] cc = chessBoard.getComponents();
+    // for (Component i: cc){
+    //     System.out.println(i);
+    // }
     int counter =0;
     for (int i=0; i<8; i++){
         for (int j=0; j<8; j++){
             Component c = chessBoard.findComponentAt(i*75, j*75);;
             if (c instanceof JPanel){
-                state[i][j] = 0;
+                state[j][i] = 0;
             }else{
-                state[i][j] = 1;
-                chessPiece = (JLabel) c;
-                System.out.println(getImageName(chessPiece));
+                state[j][i] = 1;
+                System.out.println(getImageName((JLabel) c) + i + " " + j);
                 counter++;
             }
         }
     }
-    System.out.println(Arrays.deepToString(state));
-    System.out.println(counter);
+    for (int[] i: state){
+        System.out.println(Arrays.toString(i));
+    }
     return state;
 }
 
