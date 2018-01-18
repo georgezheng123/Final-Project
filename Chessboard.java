@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.io.*;
 import java.awt.image.BufferedImage;
 
-// getBoardState
+// click in place = return;
 // rook check collision
 // bishop check collision
 // queen check collision
