@@ -13,7 +13,7 @@ public class Bishop{
 		return Math.abs(deltaX) == Math.abs(deltaY) && deltaX != 0;
 	}
 
-	public static boolean checkUnitCollision(int[] from, int[] to){
+	public static boolean checkUnitCollision(int[] from, int[] to, int[][] state){
 		return false;
 	}
 

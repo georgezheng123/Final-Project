@@ -8,7 +8,7 @@ public class Queen extends Pieces{
 		return Rook.validate(color, from, to) || Bishop.validate(color, from, to);
 	}
 
-	public static boolean checkUnitCollision(int[] from, int[] to){
+	public static boolean checkUnitCollision(int[] from, int[] to, int[][] state){
 		return Bishop.checkUnitCollision(from, to) || Rook.checkUnitCollision(from, to); 
 	}
 

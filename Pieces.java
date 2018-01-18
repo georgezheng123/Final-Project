@@ -24,7 +24,7 @@ public class Pieces extends JLabel{
 		return pieceCon;
 	}
 
-	public static boolean validates(Boolean capture, String color, String pieceName, int[] from, int[] to){
+	public static boolean validates(Boolean capture, String color, String pieceName, int[] from, int[] to, int[][] state){
 		HashMap<String, Integer> pieceCon; 
 		pieceCon = setupMap();
 		int id = pieceCon.get(pieceName);
@@ -43,13 +43,13 @@ public class Pieces extends JLabel{
 			return Knight.validate(color,from, to);
 		}
 		if (id == 2){
-			return (!Bishop.checkUnitCollision(from, to)) && Bishop.validate(color,from, to);
+			return (Bishop.validate(color,from, to) && !Bishop.checkUnitCollision(from, to, state));
 		}
 		if (id == 3){
-			return (!Rook.checkUnitCollision(from, to)) && Rook.validate(color,from, to);
+			return (Rook.validate(color,from, to) && !Rook.checkUnitCollision(from, to, state)) ;
 		}
 		if (id == 4){
-			return (!Queen.checkUnitCollision(from, to)) && Queen.validate(color,from, to);
+			return (Bishop.validate(color,from, to) && !Bishop.checkUnitCollision(from, to, state));
 		}
 		if (id == 5){
 			return King.validate(color,from, to);

@@ -15,11 +15,21 @@ public class Rook extends Pieces{
 		return deltaX == 0.0 ^ deltaY == 0.0;
 	}
 
-	public static boolean checkUnitCollision(int[] from, int[] to){
+	public static boolean checkUnitCollision(int[] from, int[] to, int[][] state){
 		int fromX = from[0];
 		int fromY = from[1];
 		int toX = to[0];
 		int toY = to[1];
+		for (int i=Math.min(fromX, toX)+1; i<Math.max(fromX, toX); i++){
+			if (state[i][fromY] == 1){
+				return true;
+			}
+		}
+		for (int i=Math.min(fromY, toY)+1; i<Math.max(fromY, toY); i++){
+			if (state[i][fromY] == 1){
+				return true;
+			}
+		}
 		return false;
 	}
 

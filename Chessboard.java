@@ -67,7 +67,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
                 else{
                     square.setBackground(Color.white);
                 }
-                chessBoard.add( square );
+                chessBoard.add(square);
             }
         }
 
@@ -259,6 +259,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         to = coords;
         String pieceType = getImageName(chessPiece);
 
+        int[][] state = getBoardState();
 
         if (c instanceof JLabel) //capture
         {//write type function
@@ -268,7 +269,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
 
 
             Boolean isDiffColor = diffColor(chessPiece, (JLabel) c);
-            Boolean isValidMove = validator.validates(true, getColor(chessPiece) , pieceType, from, to);
+            Boolean isValidMove = validator.validates(true, getColor(chessPiece) , pieceType, from, to, state);
             
             if (isValidMove && isDiffColor){
                 //System.out.println(parent);
@@ -293,7 +294,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             System.out.println(pieceType);
             System.out.println();
 
-            if (validator.validates(false, getColor(chessPiece), pieceType, from, to)){
+            if (validator.validates(false, getColor(chessPiece), pieceType, from, to, state)){
                 parent.add(chessPiece);
                 parent.validate();
             }else{//invalid move!!
