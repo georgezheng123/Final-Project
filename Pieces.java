@@ -40,12 +40,21 @@ public class Pieces extends JLabel{
 			return Knight.validate(color,from, to);
 		}
 		if (id == 2){
+			if (Bishop.checkUnitCollision(from, to)){
+				return false;
+			}
 			return Bishop.validate(color,from, to);
 		}
 		if (id == 3){
+			if (Rook.checkUnitCollision(from, to)){
+				return false;
+			}
 			return Rook.validate(color,from, to);
 		}
 		if (id == 4){
+			if (Queen.checkUnitCollision(from, to)){
+				return false;
+			}
 			return Queen.validate(color,from, to);
 		}
 		if (id == 5){
