@@ -347,7 +347,7 @@ public int[][] getBoardState(){
 
         }
     }
-    System.out.println(Arrays.toString(state));
+    System.out.println(Arrays.deepToString(state));
     return state;
 }
 
