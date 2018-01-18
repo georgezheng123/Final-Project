@@ -31,7 +31,6 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     int[] from;
     int[] to;
     Pieces validator;
-    int[][] state = getBoardState();
 
     public Chessboard()
     {
@@ -236,7 +235,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         if (chessPiece == null) return;
 
        // gets rid of the chesspiece
-        state = getBoardState();
+        int[][] state = getBoardState();
         chessPiece.setVisible(false);
         newPane.remove(chessPiece);
         chessPiece.setVisible(true);
@@ -290,7 +289,6 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             // System.out.println(to[0] + " " + to[1]);
             
             System.out.println(pieceType);
-            
             if (validator.validates(false, getColor(chessPiece), pieceType, from, to, state)){
                 parent.add(chessPiece);
                 parent.validate();
@@ -334,7 +332,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     
 
 public int[][] getBoardState(){
-    int[][] current = new int[8][8];
+    int[][] state = new int[8][8];
     // Component[] cc = chessBoard.getComponents();
     // for (Component i: cc){
     //     System.out.println(i);
@@ -344,18 +342,19 @@ public int[][] getBoardState(){
         for (int j=0; j<8; j++){
             Component c = chessBoard.findComponentAt(i*75, j*75);;
             if (c instanceof JPanel){
-                current[j][i] = 0;
+                state[j][i] = 0;
             }else{
-                current[j][i] = 1;
+                state[j][i] = 1;
                 // System.out.println(getImageName((JLabel) c) + i + " " + j);
                 counter++;
             }
         }
     }
-    for (int[] i: current){
+    for (int[] i: state){
         System.out.println(Arrays.toString(i));
     }
-    return current;
+    System.out.println();
+    return state;
 }
 
 
