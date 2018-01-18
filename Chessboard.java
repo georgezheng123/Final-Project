@@ -284,13 +284,12 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             }
         }
 
-
         else //move
         {
 
             // System.out.println(from[0] + " " + from[1]);
             // System.out.println(to[0] + " " + to[1]);
-
+            getBoardState();
             System.out.println(pieceType);
             System.out.println();
 
@@ -335,8 +334,21 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     }
     
 
-public static int[][] getBoardState(){
+public int[][] getBoardState(){
+    int[][] state = new int[8][8];
+    for (int i=0; i<8; i++){
+        for (int j=0; j<8; j++){
+            Component c = chessBoard.getComponent(i + j*8);
+            if (c instanceof JPanel){
+                state[i][j] = 0;
+            }else{
+                state[i][j] = 1;
+            }
 
+        }
+    }
+    System.out.println(Arrays.toString(state));
+    return state;
 }
 
 
