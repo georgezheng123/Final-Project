@@ -16,6 +16,10 @@ public class Rook extends Pieces{
 	}
 
 	public static boolean checkUnitCollision(int[] from, int[] to){
+		int fromX = from[0];
+		int fromY = from[1];
+		int toX = to[0];
+		int toY = to[1];
 		return false;
 	}
 
