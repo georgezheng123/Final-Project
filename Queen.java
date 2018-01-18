@@ -8,6 +8,11 @@ public class Queen extends Pieces{
 		return Rook.validate(color, from, to) || Bishop.validate(color, from, to);
 	}
 
+	public static boolean checkUnitCollision(int[] from, int[] to){
+		return Bishop.checkUnitCollision(from, to) || Rook.checkUnitCollision(from, to); 
+	}
+
+
 	public String toString(){
 		return "";
 	}
