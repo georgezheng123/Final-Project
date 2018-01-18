@@ -338,8 +338,8 @@ public int[][] getBoardState(){
     int[][] state = new int[8][8];
     for (int i=0; i<8; i++){
         for (int j=0; j<8; j++){
-            Component c = chessBoard.getComponent(i + j*8);
-            if (c instanceof JPanel){
+            Component c = (JPanel) chessBoard.getComponent(i + j*8);
+            if (c instanceof JLabel){
                 state[i][j] = 0;
             }else{
                 state[i][j] = 1;
