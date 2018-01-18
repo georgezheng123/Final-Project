@@ -204,6 +204,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
 
         newPane.add(chessPiece, JLayeredPane.DRAG_LAYER);
         newPane.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+        getBoardState();
     }
 
 
@@ -233,6 +234,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     //MOUSE RELEASED
     public void mouseReleased(MouseEvent e)
     {
+        getBoardState();
         newPane.setCursor(null);
 
         if (chessPiece == null) return;
@@ -260,7 +262,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         to = coords;
         String pieceType = getImageName(chessPiece);
 
-        getBoardState();
+
         if (c instanceof JLabel) //capture
         {//write type function
          //cannot capture of same type
@@ -303,7 +305,8 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             }
             
         }
-        
+
+        getBoardState();
     }
 
     public static String getImageName(JLabel label){//gets the name of the image file
