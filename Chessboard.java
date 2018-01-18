@@ -176,9 +176,6 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     }
 
 
-
-
-
     
 
     //dragging selected piece

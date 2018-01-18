@@ -29,6 +29,9 @@ public class Pieces extends JLabel{
 		pieceCon = setupMap();
 		int id = pieceCon.get(pieceName);
 		System.out.println(id);
+		if (from.toString().equals(to.toString())){
+			return false;
+		}
 		if (id == 0){
 			if (!capture){
 				return Pawn.validate(color,from, to);
