@@ -28,7 +28,6 @@ public class Pieces extends JLabel{
 		HashMap<String, Integer> pieceCon; 
 		pieceCon = setupMap();
 		int id = pieceCon.get(pieceName);
-		System.out.println(id);
 		if (from.toString().equals(to.toString())){
 			return false;
 		}

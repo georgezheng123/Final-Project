@@ -26,7 +26,7 @@ public class Rook extends Pieces{
 			}
 		}
 		for (int i=Math.min(fromY, toY)+1; i<Math.max(fromY, toY); i++){
-			if (state[i][fromY] == 1){
+			if (state[fromX][i] == 1){
 				return true;
 			}
 		}

@@ -31,6 +31,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     int[] from;
     int[] to;
     Pieces validator;
+    int[][] state = getBoardState();
 
     public Chessboard()
     {
@@ -201,7 +202,6 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
 
         newPane.add(chessPiece, JLayeredPane.DRAG_LAYER);
         newPane.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
-        getBoardState();
     }
 
 
@@ -231,13 +231,12 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     //MOUSE RELEASED
     public void mouseReleased(MouseEvent e)
     {
-        getBoardState();
         newPane.setCursor(null);
 
         if (chessPiece == null) return;
 
        // gets rid of the chesspiece
-
+        state = getBoardState();
         chessPiece.setVisible(false);
         newPane.remove(chessPiece);
         chessPiece.setVisible(true);
@@ -259,7 +258,6 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         to = coords;
         String pieceType = getImageName(chessPiece);
 
-        int[][] state = getBoardState();
 
         if (c instanceof JLabel) //capture
         {//write type function
@@ -292,8 +290,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             // System.out.println(to[0] + " " + to[1]);
             
             System.out.println(pieceType);
-            System.out.println();
-
+            
             if (validator.validates(false, getColor(chessPiece), pieceType, from, to, state)){
                 parent.add(chessPiece);
                 parent.validate();
@@ -304,7 +301,6 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             
         }
 
-        getBoardState();
     }
 
     public static String getImageName(JLabel label){//gets the name of the image file
@@ -338,7 +334,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     
 
 public int[][] getBoardState(){
-    int[][] state = new int[8][8];
+    int[][] current = new int[8][8];
     // Component[] cc = chessBoard.getComponents();
     // for (Component i: cc){
     //     System.out.println(i);
@@ -348,18 +344,18 @@ public int[][] getBoardState(){
         for (int j=0; j<8; j++){
             Component c = chessBoard.findComponentAt(i*75, j*75);;
             if (c instanceof JPanel){
-                state[j][i] = 0;
+                current[j][i] = 0;
             }else{
-                state[j][i] = 1;
-                System.out.println(getImageName((JLabel) c) + i + " " + j);
+                current[j][i] = 1;
+                // System.out.println(getImageName((JLabel) c) + i + " " + j);
                 counter++;
             }
         }
     }
-    for (int[] i: state){
+    for (int[] i: current){
         System.out.println(Arrays.toString(i));
     }
-    return state;
+    return current;
 }
 
 
