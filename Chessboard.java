@@ -190,7 +190,6 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
 
 
         if (c instanceof JPanel) return;
-        System.out.println(c);
 
         Point parentLocation = c.getParent().getLocation();
         moveX = parentLocation.x - e.getX();
@@ -342,19 +341,22 @@ public int[][] getBoardState(){
     for (Component i: cc){
         System.out.println(i);
     }
+    int counter =0;
     for (int i=0; i<8; i++){
         for (int j=0; j<8; j++){
             Component c = chessBoard.findComponentAt(i*75, j*75);;
             if (c instanceof JPanel){
                 state[i][j] = 0;
             }else{
-                JPanel panel = (JPanel) c;
                 state[i][j] = 1;
+                chessPiece = (JLabel) c;
+                System.out.println(getImageName(chessPiece));
+                counter++;
             }
-            
         }
     }
     System.out.println(Arrays.deepToString(state));
+    System.out.println(counter);
     return state;
 }
 
