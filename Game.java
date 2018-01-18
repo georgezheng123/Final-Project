@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Game{
+public class Game{//deprecated
 	
 	private Chessboard ChessBoard;
 	private ArrayList listOfMoves;
