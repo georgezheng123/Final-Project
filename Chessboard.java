@@ -293,6 +293,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             }else{//invalid move!!
                 JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
                 panel.add(chessPiece);
+                turn -= 1;
             }
         }
 
@@ -309,6 +310,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             }else{//invalid move!!
                 JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
                 panel.add(chessPiece);
+                turn -= 1;
             }
             
         }
