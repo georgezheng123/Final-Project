@@ -57,6 +57,12 @@ public class Pieces extends JLabel{
 		return false;
 	}
 
+	// public boolean isInCheck(int[][] state){
+	// 	if (){
+			
+	// 	}
+	// }
+
 
 	public JLabel getJLabel(){ 
 		return label; 

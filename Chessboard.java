@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.io.*;
 import java.awt.image.BufferedImage;
 
-// fix queen check collision
 // check if king is in check, king can't move into check
 // check if move other piece would mean king is in check
 // detect checkmate:: 
@@ -188,7 +187,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         Point parentLocation = c.getParent().getLocation();
         moveX = parentLocation.x - e.getX();
         moveY = parentLocation.y - e.getY();
-        chessPiece = (JLabel) c;
+        chessPiece = (JLabel) c; 
         chessPiece.setLocation(e.getX() + moveX, e.getY() + moveY);
 
 
@@ -341,6 +340,7 @@ public int[][] getBoardState(){
             if (c instanceof JPanel){
                 state[j][i] = 0;
             }else{
+                System.out.println(getImageName((JLabel) c));
                 state[j][i] = 1;
                 // System.out.println(getImageName((JLabel) c) + i + " " + j);
                 counter++;
