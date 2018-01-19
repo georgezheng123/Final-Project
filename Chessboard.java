@@ -27,10 +27,10 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     int[] from;
     int[] to;
     Pieces validator;
-    int state;
+    int turn;
 
     public Chessboard(){   
-        state = 0;
+        turn = 0;
         Pieces validator = new Pieces();
         this.validator = validator;
         Dimension boardSize = new Dimension(600, 600);
@@ -189,7 +189,9 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         moveX = parentLocation.x - e.getX();
         moveY = parentLocation.y - e.getY();
         chessPiece = (JLabel) c; 
-        if (getColor(chessPiece).equals("White") ^ state % 2 == 1){
+        if (getColor(chessPiece).equals("White") && turn % 2 == 1){
+            return;
+        }else if (getColor(chessPiece).equals("Black") && turn % 2 == 0){
             return;
         }
 
@@ -211,6 +213,11 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     public void mouseDragged(MouseEvent me)
     {
         if (chessPiece == null) return;
+        if (getColor(chessPiece).equals("White") && turn % 2 == 1){
+            return;
+        }else if (getColor(chessPiece).equals("Black") && turn % 2 == 0){
+            return;
+        }
 
         //  The drag location should be within the bounds of the chess board
 
@@ -234,6 +241,12 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         newPane.setCursor(null);
 
         if (chessPiece == null) return;
+
+        if (getColor(chessPiece).equals("White") && turn % 2 == 1){
+            return;
+        }else if (getColor(chessPiece).equals("Black") && turn % 2 == 0){
+            return;
+        }
 
        // gets rid of the chesspiece
         int[][] state = getBoardState();
@@ -299,6 +312,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             }
             
         }
+        turn += 1;
 
     }
 
