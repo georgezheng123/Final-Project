@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.*;
+
 public class Pawn extends Pieces{
 	
 
@@ -17,7 +19,7 @@ public class Pawn extends Pieces{
 		if (color.equals("Black")){
 			offset = -1.0;
 		}
-		System.out.println(state[6][fromX-1]);
+		System.out.println(Arrays.deepToString(state));
 		if (fromY == 6) return deltaX == 0.0 && (deltaY == offset || deltaY == 2.0) && state[6][fromX-1] == 0;
 		if (fromY == 1) return deltaX == 0.0 && (deltaY == offset || deltaY == -2.0)  && state[1][fromX+1] == 0;
 
