@@ -18,8 +18,8 @@ public class Pieces extends JLabel{
 	public static HashMap<String, Integer> setupMap(){
 		HashMap<String, Integer> pieceCon = new HashMap<String, Integer>();
 		String[] stuff = new String[] {"Pawn","Knight","Bishop","Rook","Queen","King"};
-		for (int i=0; i<stuff.length; i++){
-			pieceCon.put(stuff[i],i);
+		for (int i=1; i<stuff.length+1; i++){
+			pieceCon.put(stuff[i-1],i);
 		}
 		return pieceCon;
 	}
@@ -35,26 +35,28 @@ public class Pieces extends JLabel{
 		if (from.toString().equals(to.toString())){
 			return false;
 		}
-		if (id == 0){
+		id = Math.abs(id);
+		
+		if (id == 1){
 			if (!capture){
 				return Pawn.validate(color,from, to, state);
 			}
 			return Pawn.pawnCaptureValidate(color,from, to); 
 			
 		}
-		if (id == 1){
+		if (id == 2){
 			return Knight.validate(color,from, to);
 		}
-		if (id == 2){
+		if (id == 3){
 			return (Bishop.validate(color,from, to) && !Bishop.checkUnitCollision(from, to, state));
 		}
-		if (id == 3){
+		if (id == 4){
 			return (Rook.validate(color,from, to) && !Rook.checkUnitCollision(from, to, state)) ;
 		}
-		if (id == 4){
+		if (id == 5){
 			return (Queen.validate(color,from, to) && !Queen.checkUnitCollision(from, to, state));
 		}
-		if (id == 5){
+		if (id == 6){
 			return King.validate(color,from, to);
 		}
 		return false;

@@ -338,7 +338,7 @@ public int[][] getBoardState(){
         for (int j=0; j<8; j++){
             Component c = chessBoard.findComponentAt(i*75, j*75);;
             if (c instanceof JPanel){
-                state[j][i] = -1;
+                state[j][i] = 0;
             }else{
                 state[j][i] = validator.getID(getImageName((JLabel) c));
                 // System.out.println(getImageName((JLabel) c) + i + " " + j);

@@ -20,8 +20,8 @@ public class Pawn extends Pieces{
 			offset = -1.0;
 		}
 
-		if (fromY == 6) return deltaX == 0.0 && (deltaY == offset || deltaY == 2.0) && state[5][fromX] == -1;
-		if (fromY == 1) return deltaX == 0.0 && (deltaY == offset || deltaY == -2.0)  && state[2][fromX] == -1;
+		if (fromY == 6) return deltaX == 0.0 && (deltaY == offset || deltaY == 2.0) && state[5][fromX] == 0;
+		if (fromY == 1) return deltaX == 0.0 && (deltaY == offset || deltaY == -2.0)  && state[2][fromX] == 0;
 
 		return deltaX == 0.0 && deltaY == offset;
 	}

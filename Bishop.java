@@ -21,28 +21,28 @@ public class Bishop{
 
 		if (fromX<toX && fromY<toY){//upper left
 			for (int i=fromX+1, j=fromY+1; i<toX; i++, j++){
-				if (state[j][i] != -1){
+				if (state[j][i] != 0){
 					return true;
 				}
 			}
 		}
 		if (fromX>toX && fromY>toY){//down right
 			for (int i=fromX-1, j=fromY-1; i>toX; i--, j--){
-				if (state[j][i] != -1){
+				if (state[j][i] != 0){
 					return true;
 				}
 			}
 		}
 		if (fromX<toX && fromY>toY){//down left
 			for (int i=fromX+1, j=fromY-1; i<toX; i++, j--){
-				if (state[j][i] != -1){
+				if (state[j][i] != 0){
 					return true;
 				}
 			}
 		}
 		if (fromX>toX && fromY<toY){//upper right
 			for (int i=fromX-1, j=fromY+1; i>toX; i--, j++){
-				if (state[j][i] != -1){
+				if (state[j][i] != 0){
 					return true;
 				}
 			}

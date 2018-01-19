@@ -27,13 +27,13 @@ public class Rook extends Pieces{
     }
 		if (fromY == toY) {
 			for (int i=Math.min(fromX, toX)+1; i<Math.max(fromX, toX); i++){
-					if (state[fromY][i] != -1){
+					if (state[fromY][i] != 0){
 						return true;
 					}
 				}}
 		if (fromX == toX){for (int i=Math.min(fromY, toY)+1; i<Math.max(fromY, toY); i++){
 					System.out.println(i);
-					if (state[i][fromX] != -1){
+					if (state[i][fromX] != 0){
 						return true;
 					}
 				}}
