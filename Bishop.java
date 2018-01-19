@@ -40,9 +40,13 @@ public class Bishop{
 				}
 			}
 		}
-		// if (fromX>toX && fromY<toY){ //down left
-
-		// }
+		if (fromX>toX && fromY<toY){//upper right
+			for (int i=fromX-1, j=fromY+1; i>toX; i--, j++){
+				if (state[j][i] != 0){
+					return true;
+				}
+			}
+		}
 
 		
 		return false;
