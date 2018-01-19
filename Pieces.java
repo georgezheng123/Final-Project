@@ -48,7 +48,7 @@ public class Pieces extends JLabel{
 			return (Rook.validate(color,from, to) && !Rook.checkUnitCollision(from, to, state)) ;
 		}
 		if (id == 4){
-			return (Bishop.validate(color,from, to) && !Bishop.checkUnitCollision(from, to, state));
+			return (Queen.validate(color,from, to) && !Queen.checkUnitCollision(from, to, state));
 		}
 		if (id == 5){
 			return King.validate(color,from, to);

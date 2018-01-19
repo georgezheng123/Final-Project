@@ -9,7 +9,7 @@ public class Queen extends Pieces{
 	}
 
 	public static boolean checkUnitCollision(int[] from, int[] to, int[][] state){
-		return Bishop.checkUnitCollision(from, to) || Rook.checkUnitCollision(from, to); 
+		return !Bishop.checkUnitCollision(from, to, state) || !Rook.checkUnitCollision(from, to, state); 
 	}
 
 
