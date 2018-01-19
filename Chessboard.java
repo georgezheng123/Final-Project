@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 // queen check collision
 // check if king is in check, king can't move into check
 // check if move other piece would mean king is in check
-// detect checkmate: 
+// detect checkmate:: 
 // king is in check
 // look at his possible moves, loop through them to see if he'll still be in check
 // look at the piece checking him(more than 1 == checkmate), if some of his pieces can capture it
