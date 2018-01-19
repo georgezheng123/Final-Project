@@ -27,9 +27,10 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     int[] from;
     int[] to;
     Pieces validator;
+    int state;
 
-    public Chessboard()
-    {
+    public Chessboard(){   
+        state = 0;
         Pieces validator = new Pieces();
         this.validator = validator;
         Dimension boardSize = new Dimension(600, 600);
@@ -188,6 +189,10 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         moveX = parentLocation.x - e.getX();
         moveY = parentLocation.y - e.getY();
         chessPiece = (JLabel) c; 
+        if (getColor(chessPiece).equals("White") ^ state % 2 == 1){
+            return;
+        }
+
         chessPiece.setLocation(e.getX() + moveX, e.getY() + moveY);
 
 
