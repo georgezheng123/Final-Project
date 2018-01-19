@@ -14,6 +14,14 @@ public class Bishop{
 	}
 
 	public static boolean checkUnitCollision(int[] from, int[] to, int[][] state){
+		int fromX = from[0];
+		int fromY = from[1];
+		int toX = to[0];
+		int toY = to[1];
+
+		for (){
+			
+		}
 		return false;
 	}
 

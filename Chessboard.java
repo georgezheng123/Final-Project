@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.io.*;
 import java.awt.image.BufferedImage;
 
-// pawn check collision
 // bishop check collision
 // queen check collision
 // check if king is in check, king can't move into check
