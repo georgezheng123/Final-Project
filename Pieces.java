@@ -24,10 +24,14 @@ public class Pieces extends JLabel{
 		return pieceCon;
 	}
 
-	public static boolean validates(Boolean capture, String color, String pieceName, int[] from, int[] to, int[][] state){
+	public static int getID(String pieceName){
 		HashMap<String, Integer> pieceCon; 
 		pieceCon = setupMap();
-		int id = pieceCon.get(pieceName);
+		return pieceCon.get(pieceName);
+	}
+
+	public static boolean validates(Boolean capture, String color, String pieceName, int[] from, int[] to, int[][] state){
+		int id = getID(pieceName);
 		if (from.toString().equals(to.toString())){
 			return false;
 		}
@@ -59,7 +63,7 @@ public class Pieces extends JLabel{
 
 	// public boolean isInCheck(int[][] state){
 	// 	if (){
-			
+
 	// 	}
 	// }
 
