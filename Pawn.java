@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Pawn extends Pieces{
 	
 
-	public static boolean validate(String color, int[] from, int[] to){
+	public static boolean validate(String color, int[] from, int[] to, int[][] state){
 		int fromX = from[0];
 		int fromY = from[1];
 		int toX = to[0];
@@ -18,8 +18,8 @@ public class Pawn extends Pieces{
 			offset = -1.0;
 		}
 
-		if (fromY == 6) return deltaX == 0.0 && (deltaY == offset || deltaY == 2.0);
-		if (fromY == 1) return deltaX == 0.0 && (deltaY == offset || deltaY == -2.0);
+		if (fromY == 6) return deltaX == 0.0 && (deltaY == offset || deltaY == 2.0) && state[6][fromX-1] == 0;
+		if (fromY == 1) return deltaX == 0.0 && (deltaY == offset || deltaY == -2.0)  && state[1][fromX+1] == 0;
 
 		return deltaX == 0.0 && deltaY == offset;
 	}

@@ -33,7 +33,7 @@ public class Pieces extends JLabel{
 		}
 		if (id == 0){
 			if (!capture){
-				return Pawn.validate(color,from, to);
+				return Pawn.validate(color,from, to, state);
 			}
 			return Pawn.pawnCaptureValidate(color,from, to); 
 			
