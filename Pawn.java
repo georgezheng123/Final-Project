@@ -19,11 +19,9 @@ public class Pawn extends Pieces{
 		if (color.equals("Black")){
 			offset = -1.0;
 		}
-		    for (int[] i: state){
-        System.out.println(Arrays.toString(i));
-    }
-		if (fromY == 6) return deltaX == 0.0 && (deltaY == offset || deltaY == 2.0) && state[5][fromX] == 0;
-		if (fromY == 1) return deltaX == 0.0 && (deltaY == offset || deltaY == -2.0)  && state[2][fromX] == 0;
+
+		if (fromY == 6) return deltaX == 0.0 && (deltaY == offset || deltaY == 2.0) && state[5][fromX] == -1;
+		if (fromY == 1) return deltaX == 0.0 && (deltaY == offset || deltaY == -2.0)  && state[2][fromX] == -1;
 
 		return deltaX == 0.0 && deltaY == offset;
 	}
