@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.io.*;
 import java.awt.image.BufferedImage;
 
-// queen check collision
+// fix queen check collision
 // check if king is in check, king can't move into check
 // check if move other piece would mean king is in check
 // detect checkmate:: 
