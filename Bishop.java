@@ -19,8 +19,12 @@ public class Bishop{
 		int toX = to[0];
 		int toY = to[1];
 
-		for (){
-			
+		if (toX - fromX > 1){
+			for (int i=fromX+1; i<toX; i++){
+					if (){
+
+					}
+				}
 		}
 		return false;
 	}
