@@ -340,7 +340,11 @@ public int[][] getBoardState(){
             if (c instanceof JPanel){
                 state[j][i] = 0;
             }else{
-                state[j][i] = validator.getID(getImageName((JLabel) c));
+                int color = 1;
+                if (getColor((JLabel) c).equals("Black")){
+                    color = -1;
+                }
+                state[j][i] = validator.getID(getImageName((JLabel) c))*color;
                 // System.out.println(getImageName((JLabel) c) + i + " " + j);
                 counter++;
             }
