@@ -18,10 +18,15 @@ public class Rook extends Pieces{
 	}
 
 	public static boolean checkUnitCollision(int[] from, int[] to, int[][] state){
-		int fromX = from[0];
-		int fromY = from[1];
-		int toX = to[0];
-		int toY = to[1];
+		int fromX = from[1];
+		int fromY = from[0];
+		int toX = to[1];
+		int toY = to[0];
+
+		fromX = from[0];
+		fromY = from[1];
+		toX = to[0];
+		toY = to[1];
 
 		System.out.println("from" + Arrays.toString(from));
 		System.out.println("to" + Arrays.toString(to));
@@ -35,17 +40,16 @@ public class Rook extends Pieces{
 					if (state[i][fromY] != 0){
 					System.out.println(i + " " + fromY);
 
-				System.out.println(state[fromY][i]);
+					System.out.println(state[fromY][i]);
 						System.out.println("rook authen failed");
 						return true;
 					}
 					System.out.println(fromY + " " + i);
 				}}
 		if (fromX == toX){for (int i=Math.min(fromY, toY)+1; i<Math.max(fromY, toY); i++){
+					System.out.println(fromX + " " + i);		
+					System.out.println(state[fromX][i]);
 					if (state[fromX][i] != 0){
-						System.out.println(i + " " + fromX);
-						System.out.println("rook authen failed");
-				System.out.println(state[i][fromX]);
 						return true;
 					}
 				}}
