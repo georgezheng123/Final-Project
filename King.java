@@ -30,16 +30,18 @@ public class King extends Pieces{
 			for (int j=0; j<8; j++){
 				int pieceID = state[j][i];
 				int[] from = new int[] {j,i};
+				int counter = 0;
 				if (Math.abs(pieceID) != 6 && pieceID * type < 0){
 					Boolean isValid = Pieces.validates(true, color, pieceID, from, tempLoc, state);
 					if (isValid){
+						counter += 1;
 						for (int[] k: state){
     	    System.out.println(Arrays.toString(k));
     	}
 						// System.out.println("\n\n" + pieceID + "" + Arrays.toString(from));
 						// System.out.println("king is at"  + Arrays.toString(tempLoc));
 						System.out.println(pieceID + "IS CHECKING TEH KING");
-						System.out.println("\n\n");
+						System.out.println("Total pieces checking king"+ counter+ "\n\n");
 					}
 				}
 			}

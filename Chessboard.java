@@ -338,8 +338,8 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
 
     public static int[] getCoord(Point p){//gets the coordinates to be moved to
         int[] arr = new int[2];
-        arr[1] = (int) p.getX() / 75 ;
-        arr[0] = (int) p.getY() / 75 ;
+        arr[0] = (int) p.getX() / 75 ;
+        arr[1] = (int) p.getY() / 75 ;
         return arr;
     }
     
@@ -368,11 +368,7 @@ public int[][] getBoardState(){
         }
     }
 
-    // for(int i=0; i<8; i++){
-    //     for (int j=0; j<8; j++){
-    //         System.out.println("At i,j = " + i + "," + j + " there is piece" + state[i][j]);
-    //     }
-    // }
+
     // System.out.println("master :");
     // for (int[] i: state){
     //     System.out.println(Arrays.toString(i));

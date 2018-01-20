@@ -1,3 +1,6 @@
+import java.util.*;
+
+
 public class Bishop{
 	
 
@@ -22,9 +25,13 @@ public class Bishop{
 		int fromY = from[1];
 		int toY = to[1];
 
+		System.out.println("from" + Arrays.toString(from));
+		System.out.println("to" + Arrays.toString(to));
+
 		if (fromX<toX && fromY<toY){//upper left
 			for (int i=fromX+1, j=fromY+1; i<toX; i++, j++){
 				if (state[j][i] != 0){
+					System.out.println("state[j][i] is " + state[j][i]);
 					System.out.println("a");
 					return true;
 				}
@@ -57,6 +64,8 @@ public class Bishop{
 		System.out.println("bishop authen passed");
 		return false;
 	}
+
+
 
 
 }
