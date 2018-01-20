@@ -62,6 +62,34 @@ public class Pieces extends JLabel{
 		return false;
 	}
 
+	public static boolean validates(Boolean capture, String color, int id, int[] from, int[] to, int[][] state){
+		id = Math.abs(id);
+		
+		if (id == 1){
+			if (!capture){
+				return Pawn.validate(color,from, to, state);
+			}
+			return Pawn.pawnCaptureValidate(color,from, to); 
+			
+		}
+		if (id == 2){
+			return Knight.validate(color,from, to);
+		}
+		if (id == 3){
+			return (Bishop.validate(color,from, to) && !Bishop.checkUnitCollision(from, to, state));
+		}
+		if (id == 4){
+			return (Rook.validate(color,from, to) && !Rook.checkUnitCollision(from, to, state)) ;
+		}
+		if (id == 5){
+			return (Queen.validate(color,from, to) && !Queen.checkUnitCollision(from, to, state));
+		}
+		if (id == 6){
+			return King.validate(color, from, to, state);
+		}
+		return false;
+	}
+
 
 	public JLabel getJLabel(){ 
 		return label; 

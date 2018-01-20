@@ -277,12 +277,8 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
          //cannot capture of same type
             Point parentLocation = c.getParent().getLocation();
             to = getCoord(parentLocation);
-
-
-            Boolean isDiffColor = diffColor(chessPiece, (JLabel) c);
-            Boolean isValidMove = validator.validates(true, getColor(chessPiece) , pieceType, from, to, state);
             
-            if (isValidMove && isDiffColor){
+            if (diffColor(chessPiece, (JLabel) c) && validator.validates(true, getColor(chessPiece) , pieceType, from, to, state)){
                 //System.out.println(parent);
                 // parent.remove(0);
                 // parent.add( chessPiece );
