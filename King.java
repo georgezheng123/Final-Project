@@ -18,8 +18,10 @@ public class King extends Pieces{
 	}
 
 
-	public String toString(){
-		return "";
-	}
+	// public boolean isInCheck(int[][] state, int[] king, ){
+	// 	if (){
+
+	// 	}
+	// }
 
 }
