@@ -14,6 +14,9 @@ public class Bishop{
 	}
 
 	public static boolean checkUnitCollision(int[] from, int[] to, int[][] state){
+		if (!validate("color", from, to)){
+			return false;
+		}
 		int fromX = from[0]; //[down, right]
 		int toX = to[0];
 		int fromY = from[1];
@@ -22,6 +25,7 @@ public class Bishop{
 		if (fromX<toX && fromY<toY){//upper left
 			for (int i=fromX+1, j=fromY+1; i<toX; i++, j++){
 				if (state[j][i] != 0){
+					System.out.println("a");
 					return true;
 				}
 			}
@@ -29,6 +33,7 @@ public class Bishop{
 		if (fromX>toX && fromY>toY){//down right
 			for (int i=fromX-1, j=fromY-1; i>toX; i--, j--){
 				if (state[j][i] != 0){
+					System.out.println("b");
 					return true;
 				}
 			}
@@ -36,6 +41,7 @@ public class Bishop{
 		if (fromX<toX && fromY>toY){//down left
 			for (int i=fromX+1, j=fromY-1; i<toX; i++, j--){
 				if (state[j][i] != 0){
+					System.out.println("c");
 					return true;
 				}
 			}
@@ -43,12 +49,12 @@ public class Bishop{
 		if (fromX>toX && fromY<toY){//upper right
 			for (int i=fromX-1, j=fromY+1; i>toX; i--, j++){
 				if (state[j][i] != 0){
+					System.out.println("d");
 					return true;
 				}
 			}
 		}
-
-		
+		System.out.println("bishop authen passed");
 		return false;
 	}
 

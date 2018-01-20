@@ -22,20 +22,32 @@ public class Rook extends Pieces{
 		int fromY = from[1];
 		int toX = to[0];
 		int toY = to[1];
-		  //   for (int[] i: state){
-    //     System.out.println(Arrays.toString(i));
-    // }
-		if (fromY == toY) {
+
+		System.out.println("from" + Arrays.toString(from));
+		System.out.println("to" + Arrays.toString(to));
+		    for (int[] i: state){
+        System.out.println(Arrays.toString(i));
+    }
+		if (fromY == toY) { 
+			System.out.println("upToDown");	
 			for (int i=Math.min(fromX, toX)+1; i<Math.max(fromX, toX); i++){
 					if (state[fromY][i] != 0){
+				// 						System.out.println(fromY + " " + i);
+
+				// System.out.println(state[fromY][i]);
+						System.out.println("rook authen failed");
 						return true;
 					}
 				}}
 		if (fromX == toX){for (int i=Math.min(fromY, toY)+1; i<Math.max(fromY, toY); i++){
 					if (state[i][fromX] != 0){
+				// 		System.out.println(i + " " + fromX);
+						System.out.println("rook authen failed");
+				// System.out.println(state[i][fromX]);
 						return true;
 					}
 				}}
+		System.out.println("rook unit collision passed");
 		return false;
 	}
 

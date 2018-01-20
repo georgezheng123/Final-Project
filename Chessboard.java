@@ -299,7 +299,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             // System.out.println(from[0] + " " + from[1]);
             // System.out.println(to[0] + " " + to[1]);
             
-            System.out.println(pieceType);
+            System.out.println(pieceType + "being moved");
             if (validator.validates(false, getColor(chessPiece), pieceType, from, to, state)){
                 parent.add(chessPiece);
                 parent.validate();
@@ -338,14 +338,14 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
 
     public static int[] getCoord(Point p){//gets the coordinates to be moved to
         int[] arr = new int[2];
-        arr[0] = (int) p.getX() / 75 ;
-        arr[1] = (int) p.getY() / 75 ;
+        arr[1] = (int) p.getX() / 75 ;
+        arr[0] = (int) p.getY() / 75 ;
         return arr;
     }
     
 
 public int[][] getBoardState(){
-    int[][] state = new int[8][8];
+    int[][] state = new int[8][8]; //[down, right]
     // Component[] cc = chessBoard.getComponents();
     // for (Component i: cc){
     //     System.out.println(i);
@@ -367,10 +367,16 @@ public int[][] getBoardState(){
             }
         }
     }
-    System.out.println("master :");
-    for (int[] i: state){
-        System.out.println(Arrays.toString(i));
-    }
+
+    // for(int i=0; i<8; i++){
+    //     for (int j=0; j<8; j++){
+    //         System.out.println("At i,j = " + i + "," + j + " there is piece" + state[i][j]);
+    //     }
+    // }
+    // System.out.println("master :");
+    // for (int[] i: state){
+    //     System.out.println(Arrays.toString(i));
+    // }
     // System.out.println();
     return state;
 }
