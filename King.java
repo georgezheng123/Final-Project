@@ -26,9 +26,11 @@ public class King extends Pieces{
     }
     System.out.println(Arrays.toString(location));
 		;
-		// if (){
-
-		// }
+		for (int i=0; i<8; i++){
+			for (int j=0; j<8; j++){
+				int pieceID = state[j][i];
+			}
+		}
 		return false;
 	}
 
