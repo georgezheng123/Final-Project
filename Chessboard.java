@@ -367,9 +367,10 @@ public int[][] getBoardState(){
             }
         }
     }
-    // for (int[] i: state){
-    //     System.out.println(Arrays.toString(i));
-    // }
+    System.out.println("master :");
+    for (int[] i: state){
+        System.out.println(Arrays.toString(i));
+    }
     // System.out.println();
     return state;
 }
