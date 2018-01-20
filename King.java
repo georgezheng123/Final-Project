@@ -31,6 +31,8 @@ public class King extends Pieces{
 			for (int j=0; j<8; j++){
 				int pieceID = state[j][i];
 				if (pieceID * type < 0){
+					Boolean isValid = Pieces.validates(true, color, pieceID, new int[] {j,i}, location, state);
+					System.out.println(isValid);
 					//System.out.println(" " + i + " " + j+" " +pieceID);
 				}
 			}
