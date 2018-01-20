@@ -32,8 +32,8 @@ public class Rook extends Pieces{
 			//System.out.println("upToDown");	
 			for (int i=Math.min(fromX, toX)+1; i<Math.max(fromX, toX); i++){
 
-					if (state[fromY][i] != 0){
-					System.out.println(fromY + " " + i);
+					if (state[i][fromY] != 0){
+					System.out.println(i + " " + fromY);
 
 				System.out.println(state[fromY][i]);
 						System.out.println("rook authen failed");
@@ -42,7 +42,7 @@ public class Rook extends Pieces{
 					System.out.println(fromY + " " + i);
 				}}
 		if (fromX == toX){for (int i=Math.min(fromY, toY)+1; i<Math.max(fromY, toY); i++){
-					if (state[i][fromX] != 0){
+					if (state[fromX][i] != 0){
 						System.out.println(i + " " + fromX);
 						System.out.println("rook authen failed");
 				System.out.println(state[i][fromX]);
