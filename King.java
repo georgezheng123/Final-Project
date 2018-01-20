@@ -16,15 +16,17 @@ public class King extends Pieces{
 
 		double dist = Math.hypot(deltaX, deltaY);
 
-		isInCheck(state, to);
+		isInCheck(state, to, (color.equals("White")) ? 6 : -6);
 		return dist == 1.0 || dist == Math.sqrt(2);
 	}
 
-	public static boolean isInCheck(int[][] state, int[] location){
-		    for (int[] i: state){
-        System.out.println(Arrays.toString(i));
-    }
-    System.out.println(Arrays.toString(location));
+	public static boolean isInCheck(int[][] state, int[] location, int type){
+		for (int[] i: state){
+    	    System.out.println(Arrays.toString(i));
+    	}
+    	System.out.println(Arrays.toString(location));
+    	int color = state[location[0]][location[1]];
+    	System.out.println(color);
 		;
 		for (int i=0; i<8; i++){
 			for (int j=0; j<8; j++){
