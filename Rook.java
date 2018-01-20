@@ -31,23 +31,25 @@ public class Rook extends Pieces{
 		if (fromY == toY) { 
 			//System.out.println("upToDown");	
 			for (int i=Math.min(fromX, toX)+1; i<Math.max(fromX, toX); i++){
-					if (state[fromY][i] != 0){
-				// 						System.out.println(fromY + " " + i);
 
-				// System.out.println(state[fromY][i]);
-						// System.out.println("rook authen failed");
-						// return true;
+					if (state[fromY][i] != 0){
+					System.out.println(fromY + " " + i);
+
+				System.out.println(state[fromY][i]);
+						System.out.println("rook authen failed");
+						return true;
 					}
+					System.out.println(fromY + " " + i);
 				}}
 		if (fromX == toX){for (int i=Math.min(fromY, toY)+1; i<Math.max(fromY, toY); i++){
 					if (state[i][fromX] != 0){
-				// 		System.out.println(i + " " + fromX);
-						// System.out.println("rook authen failed");
-				// System.out.println(state[i][fromX]);
+						System.out.println(i + " " + fromX);
+						System.out.println("rook authen failed");
+				System.out.println(state[i][fromX]);
 						return true;
 					}
 				}}
-		// System.out.println("rook unit collision passed");
+		System.out.println("rook unit collision passed");
 		return false;
 	}
 
