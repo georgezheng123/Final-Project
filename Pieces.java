@@ -35,14 +35,16 @@ public class Pieces extends JLabel{
 	public static boolean validates(Boolean capture, String color, String pieceName, int[] from, int[] to, int[][] state){
 
 		int id = getID(pieceName);
+		id = id * ((color.equals("White")) ? 1 : -1);
 		if (from.toString().equals(to.toString())){
 			return false;
 		}
 		
 		
-		if (id != 6 && checkIfCheck(color, state, from, to, id)){
+		if (Math.abs(id) != 6 && checkIfCheck(color, state, from, to, id)){
 			return false;
 		}
+
 		id = Math.abs(id);
 
 		if (id == 1){
@@ -70,9 +72,9 @@ public class Pieces extends JLabel{
 	}
 
 	public static boolean validates(Boolean capture, String color, int id, int[] from, int[] to, int[][] state){
-		id = Math.abs(id);
+		//id = Math.abs(id);
 		
-		if (id == 1){
+		if (Math.abs(id)== 1){
 
 			if (!capture){
 				return Pawn.validate(color,from, to, state);
@@ -80,19 +82,19 @@ public class Pieces extends JLabel{
 			return Pawn.pawnCaptureValidate(color,from, to); 
 			
 		}
-		if (id == 2){
+		if (Math.abs(id)== 2){
 			return Knight.validate(color,from, to);
 		}
-		if (id == 3){
+		if (Math.abs(id)== 3){
 			return (Bishop.validate(color,from, to) && !Bishop.checkUnitCollision(from, to, state));
 		}
-		if (id == 4){
+		if (Math.abs(id)== 4){
 			return (Rook.validate(color,from, to) && !Rook.checkUnitCollision(from, to, state)) ;
 		}
-		if (id == 5){
+		if (Math.abs(id)== 5){
 			return (Queen.validate(color,from, to) && !Queen.checkUnitCollision(from, to, state));
 		}
-		if (id == 6){
+		if (Math.abs(id)== 6){
 			return King.validate(color, from, to, state, false);
 		}
 		return false;
@@ -126,6 +128,7 @@ public class Pieces extends JLabel{
 		int toY = to[0];
 		stateee[fromX][fromY] = 0;
 		stateee[toX][toY] = id;
+		System.out.println(id);
 				    for (int[] i: stateee){
         System.out.println(Arrays.toString(i));
     }
