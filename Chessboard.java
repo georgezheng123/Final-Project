@@ -5,12 +5,12 @@ import javax.swing.*;
 import java.io.*;
 import java.awt.image.BufferedImage;
 
-// check if king is in check, king can't move into check
+// king can't move into check
 // check if move other piece would mean king is in check
 // detect checkmate:: 
 // king is in check
 // look at his possible moves, loop through them to see if he'll still be in check
-// look at the piece checking him(more than 1 == checkmate), if some of his pieces can capture it
+// look at the piece checking him, if some of his pieces can capture it
 // look if some of his pieces can block that piece
 // it is checkmates
 // en passant, castling , pawn promotion
