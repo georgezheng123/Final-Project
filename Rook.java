@@ -23,10 +23,9 @@ public class Rook extends Pieces{
 		int toX = to[1];
 		int toY = to[0];
 
-		fromX = from[0];
-		fromY = from[1];
-		toX = to[0];
-		toY = to[1];
+		System.out.println(fromX + "," + fromY + "   " + toX + "," + toY + "" );
+
+
 
 		System.out.println("from" + Arrays.toString(from));
 		System.out.println("to" + Arrays.toString(to));
