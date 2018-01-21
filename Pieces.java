@@ -42,7 +42,6 @@ public class Pieces extends JLabel{
 				return Pawn.validate(color,from, to, state);
 			}
 			return Pawn.pawnCaptureValidate(color,from, to); 
-			
 		}
 		if (id == 2){
 			return Knight.validate(color,from, to);

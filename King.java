@@ -17,9 +17,9 @@ public class King extends Pieces{
 		double dist = Math.hypot(deltaX, deltaY);
 		// System.out.println("king:" + fromX + "," + fromY + "   " + toX + "," + toY + "" );
 
-
-		isInCheck(color, state, to, (color.equals("White")) ? 6 : -6);
-		return dist == 1.0 || dist == Math.sqrt(2);
+		Boolean intoCheck = isInCheck(color, state, to, (color.equals("White")) ? 6 : -6);
+	
+		return !intoCheck && (dist == 1.0 || dist == Math.sqrt(2));
 	}
 
 	public static boolean isInCheck(String color, int[][] state, int[] location, int type){
@@ -27,17 +27,21 @@ public class King extends Pieces{
   //   	    System.out.println(Arrays.toString(i));
   //   	}
 		color = otherColor(color);
+		Boolean isChecked = false;
 		for (int i=0; i<8; i++){
 			for (int j=0; j<8; j++){
 				int pieceID = state[j][i];
 				int[] from = new int[] {i,j};
 				
-				int counter = 0;
-				if (Math.abs(pieceID) != 6 && pieceID * type < 0){
-					
-					Boolean isValid = Pieces.validates(true, color, pieceID, from, location, state);
+				if (pieceID * type < 0){
+					Boolean isValid;
+					if (Math.abs(pieceID) != 6){
+						isValid = Pieces.validates(true, color, pieceID, from, location, state);
+					}else{
+						isValid = false;
+					}
 					if (isValid){
-						counter += 1;
+						isChecked = true;
 						// System.out.println("\n\n" + pieceID + "" + Arrays.toString(from));
 						// System.out.println("king is at"  + Arrays.toString(tempLoc));
 						System.out.println(pieceID + "IS CHECKING TEH KING at " 
@@ -47,7 +51,8 @@ public class King extends Pieces{
 				}
 			}
 		}
-		return false;
+		System.out.println(isChecked);
+		return isChecked;
 	}
 
 	public static String otherColor(String color){
