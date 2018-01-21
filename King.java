@@ -5,7 +5,7 @@ import java.util.*;
 
 public class King extends Pieces{
 
-	public static boolean validate(String color, int[] from, int[] to, int[][] state){
+	public static boolean validate(String color, int[] from, int[] to, int[][] state, Boolean toCheck){
 		int fromX = from[0];
 		int fromY = from[1];
 		int toX = to[0];
@@ -17,8 +17,12 @@ public class King extends Pieces{
 		double dist = Math.hypot(deltaX, deltaY);
 		// System.out.println("king:" + fromX + "," + fromY + "   " + toX + "," + toY + "" );
 
-		Boolean intoCheck = isInCheck(color, state, to, (color.equals("White")) ? 6 : -6);
-	
+		Boolean intoCheck; 
+		if (!toCheck){
+			intoCheck = isInCheck(color, state, to, (color.equals("White")) ? 6 : -6);
+		}else{
+			intoCheck = false;
+		}
 		return !intoCheck && (dist == 1.0 || dist == Math.sqrt(2));
 	}
 
@@ -38,7 +42,7 @@ public class King extends Pieces{
 					if (Math.abs(pieceID) != 6){
 						isValid = Pieces.validates(true, color, pieceID, from, location, state);
 					}else{
-						isValid = false;
+						isValid = validate(color, from, location, state, true);
 					}
 					if (isValid){
 						isChecked = true;

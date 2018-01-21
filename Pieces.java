@@ -56,7 +56,7 @@ public class Pieces extends JLabel{
 			return (Queen.validate(color,from, to) && !Queen.checkUnitCollision(from, to, state));
 		}
 		if (id == 6){
-			return King.validate(color, from, to, state);
+			return King.validate(color, from, to, state, false);
 		}
 		return false;
 	}
@@ -85,7 +85,7 @@ public class Pieces extends JLabel{
 			return (Queen.validate(color,from, to) && !Queen.checkUnitCollision(from, to, state));
 		}
 		if (id == 6){
-			return King.validate(color, from, to, state);
+			return King.validate(color, from, to, state, false);
 		}
 		return false;
 	}
