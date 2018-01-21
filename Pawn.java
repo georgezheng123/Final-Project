@@ -29,20 +29,21 @@ public class Pawn extends Pieces{
 	}
 
 	public static boolean pawnCaptureValidate(String color, int[] from, int[] to){
-		int fromX = from[0];
-		int fromY = from[1];
-		int toX = to[0];
-		int toY = to[1];
+		int fromX = from[1]; 
+		int toX = to[1];
+
+		int fromY = from[0];
+		int toY = to[0];
 
 		double deltaX = fromX - toX;
 		double deltaY = fromY - toY;
-
+		
 		double offset = 1.0;
 		if (color.equals("Black")){
 			offset = -1.0;
 		}
 
-		return Math.abs(deltaX) == 1 && deltaY == offset;
+		return Math.abs(deltaY) == 1 && deltaX == offset;
 	}
 
 	public String toString(){
