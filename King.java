@@ -15,7 +15,8 @@ public class King extends Pieces{
 		double deltaY = fromY - toY;
 
 		double dist = Math.hypot(deltaX, deltaY);
-		System.out.println(Arrays.toString(to));
+		// System.out.println("king:" + fromX + "," + fromY + "   " + toX + "," + toY + "" );
+
 
 		isInCheck(color, state, to, (color.equals("White")) ? 6 : -6);
 		return dist == 1.0 || dist == Math.sqrt(2);
@@ -28,7 +29,7 @@ public class King extends Pieces{
 		for (int i=0; i<8; i++){
 			for (int j=0; j<8; j++){
 				int pieceID = state[j][i];
-				int[] from = new int[] {j,i};
+				int[] from = new int[] {i,j};
 				
 				int counter = 0;
 				if (Math.abs(pieceID) != 6 && pieceID * type < 0){
@@ -39,7 +40,7 @@ public class King extends Pieces{
 						// System.out.println("king is at"  + Arrays.toString(tempLoc));
 						System.out.println(pieceID + "IS CHECKING TEH KING at " 
 							+ Arrays.toString(location) + " from "+ Arrays.toString(from));
-						System.out.println("Total pieces checking king"+ counter+ "\n\n");
+						// System.out.println("Total pieces checking king"+ counter+ "\n\n");
 					}
 				}
 			}
