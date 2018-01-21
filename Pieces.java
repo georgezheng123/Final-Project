@@ -112,7 +112,21 @@ public class Pieces extends JLabel{
 	}
 
 	public static Boolean checkIfCheck(String color, int[][] state, int[] from, int[] to){
+		int[] kingLocation = findTheKing(color, state);
+				    for (int[] i: state){
+        System.out.println(Arrays.toString(i));
+    }
+    	int fromX = from[1]; 
+		int toX = to[1];
 
+		int fromY = from[0];
+		int toY = to[0];
+    	state[fromX][fromY] = 0;
+    	state[toX][toY] = 0;
+
+    	for (int[] i: state){
+        System.out.println(Arrays.toString(i));
+    }
 		return true;
 	}
 
