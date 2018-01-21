@@ -290,6 +290,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
                 JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
                 panel.add(chessPiece);
                 turn -= 1;
+                parent.validate();
             }
         }
 
@@ -311,7 +312,8 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
                 JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
                 panel.add(chessPiece);
                 turn -= 1;
-            }
+                parent.validate();
+            }//put checkmate check function after a sucessful move or capture
             
         }
         turn += 1;

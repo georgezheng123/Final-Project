@@ -55,7 +55,7 @@ public class King extends Pieces{
 				}
 			}
 		}
-		System.out.println(isChecked);
+		// System.out.println(isChecked);
 		return isChecked;
 	}
 
