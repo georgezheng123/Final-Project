@@ -33,16 +33,17 @@ public class Pieces extends JLabel{
 	}
 
 	public static boolean validates(Boolean capture, String color, String pieceName, int[] from, int[] to, int[][] state){
-				    for (int[] i: state){
-        System.out.println(Arrays.toString(i));
-    }
-     System.out.println(Arrays.toString(from));
+
 		int id = getID(pieceName);
 		if (from.toString().equals(to.toString())){
 			return false;
 		}
 		id = Math.abs(id);
 		
+		if (id != 6 && checkIfCheck(color, state, from, to)){
+			return false;
+		}
+
 		if (id == 1){
 			if (!capture){
 				return Pawn.validate(color,from, to, state);
@@ -108,6 +109,11 @@ public class Pieces extends JLabel{
 			}
 		}
 		return ans;
+	}
+
+	public static Boolean checkIfCheck(String color, int[][] state, int[] from, int[] to){
+
+		return true;
 	}
 
 	public JLabel getJLabel(){ 
