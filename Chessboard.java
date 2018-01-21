@@ -5,13 +5,13 @@ import javax.swing.*;
 import java.io.*;
 import java.awt.image.BufferedImage;
 
-// check if move other piece would mean king is in check
 // detect checkmate:: 
 // king is in check
 // look at his possible moves, loop through them to see if he'll still be in check
 // look at the piece checking him, if some of his pieces can capture it
-// look if some of his pieces can block that piece
-// it is checkmates
+// for every empty square, for every piece of the same color check if
+//moving it will uncheck the king
+// it is checkmates!
 // en passant, castling , pawn promotion
 // TESTING
 
@@ -177,6 +177,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     //dragging selected piece
     public void mousePressed(MouseEvent e)
     {
+
         chessPiece = null;
         Component c =  chessBoard.findComponentAt(e.getX(), e.getY());
         //System.out.println(c);
@@ -314,8 +315,9 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             
         }
         turn += 1;
-
+        
     }
+    
 
     public static String getImageName(JLabel label){//gets the name of the image file
         Icon icon = label.getIcon();

@@ -128,7 +128,7 @@ public class Pieces extends JLabel{
 		int toY = to[0];
 		stateee[fromX][fromY] = 0;
 		stateee[toX][toY] = id;
-		System.out.println(id);
+		System.out.println("will now check for check:");
 				    for (int[] i: stateee){
         System.out.println(Arrays.toString(i));
     }
