@@ -2,15 +2,10 @@ import java.util.HashMap;
 import javax.swing.*; 
 import java.util.ArrayList; 
 
-public class Pieces extends JLabel{ 
-	private Position position; 
+public class Pieces extends JLabel{  
 	private int color; 
 	private JLabel label;
 	 
-	
-	public Pieces(Position coordinate, int colors){ 
-		position = coordinate; color = colors; 
-	} 
 
 	public Pieces(){ 
 	} 
