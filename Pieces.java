@@ -8,7 +8,7 @@ public class Pieces extends JLabel{
 	private Position position; 
 	private int color; 
 	private JLabel label;
-	 
+
 	
 	public Pieces(Position coordinate, int colors){ 
 		position = coordinate; color = colors; 
@@ -113,21 +113,20 @@ public class Pieces extends JLabel{
 
 	public static Boolean checkIfCheck(String color, int[][] state, int[] from, int[] to){
 		int[] kingLocation = findTheKing(color, state);
-				    for (int[] i: state){
-        System.out.println(Arrays.toString(i));
-    }
-    	int fromX = from[1]; 
+
+		int[][] stateee = state.clone();
+		for (int i = 0; i < stateee.length; i++) {
+			stateee[i] = state[i].clone();
+		}
+		int fromX = from[1]; 
 		int toX = to[1];
 
 		int fromY = from[0];
 		int toY = to[0];
-    	state[fromX][fromY] = 0;
-    	state[toX][toY] = 0;
+		stateee[fromX][fromY] = 0;
+		stateee[toX][toY] = 0;
 
-    	for (int[] i: state){
-        System.out.println(Arrays.toString(i));
-    }
-		return true;
+		return King.isInCheck(color, state, kingLocation, (color.equals("White")) ? 6 : -6);
 	}
 
 	public JLabel getJLabel(){ 
@@ -145,4 +144,3 @@ public class Pieces extends JLabel{
 		return "I am a validator"; 
 	} 
 }
-	
