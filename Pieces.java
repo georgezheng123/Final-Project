@@ -38,11 +38,12 @@ public class Pieces extends JLabel{
 		if (from.toString().equals(to.toString())){
 			return false;
 		}
-		id = Math.abs(id);
 		
-		if (id != 6 && checkIfCheck(color, state, from, to)){
+		
+		if (id != 6 && checkIfCheck(color, state, from, to, id)){
 			return false;
 		}
+		id = Math.abs(id);
 
 		if (id == 1){
 			if (!capture){
@@ -111,7 +112,7 @@ public class Pieces extends JLabel{
 		return ans;
 	}
 
-	public static Boolean checkIfCheck(String color, int[][] state, int[] from, int[] to){
+	public static Boolean checkIfCheck(String color, int[][] state, int[] from, int[] to, int id){
 		int[] kingLocation = findTheKing(color, state);
 
 		int[][] stateee = state.clone();
@@ -124,9 +125,11 @@ public class Pieces extends JLabel{
 		int fromY = from[0];
 		int toY = to[0];
 		stateee[fromX][fromY] = 0;
-		stateee[toX][toY] = 0;
-
-		return King.isInCheck(color, state, kingLocation, (color.equals("White")) ? 6 : -6);
+		stateee[toX][toY] = id;
+				    for (int[] i: stateee){
+        System.out.println(Arrays.toString(i));
+    }
+		return King.isInCheck(color, stateee, kingLocation, (color.equals("White")) ? 6 : -6);
 	}
 
 	public JLabel getJLabel(){ 
