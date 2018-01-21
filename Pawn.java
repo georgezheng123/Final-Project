@@ -15,20 +15,17 @@ public class Pawn extends Pieces{
 
 		double deltaX = fromX - toX;
 		double deltaY = fromY - toY;
-		System.out.println(deltaX);
-		System.out.println(deltaY);
+
+
 		double offset = 1.0;
 		if (color.equals("Black")){
 			offset = -1.0;
 		}
 
-		if (fromY == 6) return deltaY == 0.0 && (deltaX == offset || deltaX == 2.0) && state[5][fromY] == 0;
-		System.out.println(deltaY == 0.0);
-		System.out.println(deltaX == offset || deltaX == -2.0);
-		System.out.println(state[2][(int)fromY] == 0);
-		if (fromY == 1) return deltaY == 0.0 && (deltaX == offset || deltaX == -2.0)  && state[2][(int)fromY] == 0;
-		System.out.println("i should not be here");
-		return deltaX == 0.0 && deltaY == offset;
+		if (fromX == 6) return deltaY == 0.0 && (deltaX == offset || deltaX == 2.0) && state[5][fromY] == 0;
+
+		if (fromX == 1) return deltaY == 0.0 && (deltaX == offset || deltaX == -2.0)  && state[2][(int)fromY] == 0;
+		return deltaY == 0.0 && deltaX == offset;
 	}
 
 	public static boolean pawnCaptureValidate(String color, int[] from, int[] to){
