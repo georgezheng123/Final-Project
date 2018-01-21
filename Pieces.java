@@ -1,6 +1,8 @@
 import java.util.HashMap;
 import javax.swing.*; 
 import java.util.ArrayList; 
+import java.util.*;
+
 
 public class Pieces extends JLabel{ 
 	private Position position; 
@@ -31,6 +33,10 @@ public class Pieces extends JLabel{
 	}
 
 	public static boolean validates(Boolean capture, String color, String pieceName, int[] from, int[] to, int[][] state){
+				    for (int[] i: state){
+        System.out.println(Arrays.toString(i));
+    }
+     System.out.println(Arrays.toString(from));
 		int id = getID(pieceName);
 		if (from.toString().equals(to.toString())){
 			return false;
@@ -90,6 +96,19 @@ public class Pieces extends JLabel{
 		return false;
 	}
 
+	public static int[] findTheKing(String color, int[][] state){
+		int[] ans = new int[2];  
+		int target = ((color.equals("White")) ? 6 : -6);
+		for (int i=0; i<8; i++){
+			for (int j=0; j<8; j++){
+				int pieceID = state[j][i];
+				if (pieceID == target){
+					ans = new int[] {i,j};
+				}
+			}
+		}
+		return ans;
+	}
 
 	public JLabel getJLabel(){ 
 		return label; 
