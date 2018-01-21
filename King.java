@@ -25,13 +25,16 @@ public class King extends Pieces{
 		// for (int[] i: state){
   //   	    System.out.println(Arrays.toString(i));
   //   	}
-		;
+		System.out.println(Arrays.toString(tempLoc));
 		for (int i=0; i<8; i++){
 			for (int j=0; j<8; j++){
 				int pieceID = state[j][i];
 				int[] from = new int[] {j,i};
+				
+
 				int counter = 0;
 				if (Math.abs(pieceID) != 6 && pieceID * type < 0){
+					System.out.println(Arrays.toString(from));
 					Boolean isValid = Pieces.validates(true, color, pieceID, from, tempLoc, state);
 					if (isValid){
 						counter += 1;

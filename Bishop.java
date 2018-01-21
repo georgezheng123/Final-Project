@@ -20,19 +20,19 @@ public class Bishop{
 		if (!validate("color", from, to)){
 			return false;
 		}
-		int fromX = from[0]; //[down, right]
+		int fromX = from[1]; //[down, right]
 		int toX = to[0];
-		int fromY = from[1];
+
+		int fromY = from[0];
 		int toY = to[1];
 
-		System.out.println("from" + Arrays.toString(from));
-		System.out.println("to" + Arrays.toString(to));
+		System.out.println("bishop coords" + fromX + "," + fromY + "   " + toX + "," + toY + "" );
 
 		if (fromX<toX && fromY<toY){//upper left
 			for (int i=fromX+1, j=fromY+1; i<toX; i++, j++){
 				if (state[j][i] != 0){
-					System.out.println("state[j][i] is " + state[j][i]);
-					System.out.println("a");
+					// System.out.println("state[j][i] is " + state[j][i]);
+					System.out.println("bis a");
 					return true;
 				}
 			}
@@ -40,7 +40,7 @@ public class Bishop{
 		if (fromX>toX && fromY>toY){//down right
 			for (int i=fromX-1, j=fromY-1; i>toX; i--, j--){
 				if (state[j][i] != 0){
-					System.out.println("b");
+					System.out.println("bish b");
 					return true;
 				}
 			}
@@ -48,7 +48,7 @@ public class Bishop{
 		if (fromX<toX && fromY>toY){//down left
 			for (int i=fromX+1, j=fromY-1; i<toX; i++, j--){
 				if (state[j][i] != 0){
-					System.out.println("c");
+					System.out.println("bish c");
 					return true;
 				}
 			}
@@ -56,7 +56,7 @@ public class Bishop{
 		if (fromX>toX && fromY<toY){//upper right
 			for (int i=fromX-1, j=fromY+1; i>toX; i--, j++){
 				if (state[j][i] != 0){
-					System.out.println("d");
+					System.out.println("bish d");
 					return true;
 				}
 			}
