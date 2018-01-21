@@ -20,11 +20,13 @@ import java.awt.image.BufferedImage;
 // TESTING
 
 
-public class Chessboard extends JFrame implements MouseListener, MouseMotionListener
+public class Chessboard extends JFrame implements MouseListener, MouseMotionListener, ActionListener
 {
+	private Container pane;
     JLayeredPane newPane;
     JPanel chessBoard;
     JLabel chessPiece;
+    private JButton restart;
     int moveY;
     int moveX;
     int[] from;
@@ -36,6 +38,10 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         Pieces validator = new Pieces();
         this.validator = validator;
         Dimension boardSize = new Dimension(600, 600);
+        restart = new JButton("RESTART");
+        restart.addActionListener(this);
+        restart.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+        newPane.add(restart);
 
         //layered Pane so you can add MouseListener
 
@@ -354,6 +360,13 @@ public int[][] getBoardState(){
     // }
     // System.out.println();
     return state;
+}
+public void actionPerformed(ActionEvent e){
+	/*JButton restartButton = (JButton)e.getSource();
+	if (restart == restartButton){
+		for(int i = 
+	
+	}*/
 }
 
 
