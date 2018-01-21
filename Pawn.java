@@ -34,8 +34,6 @@ public class Pawn extends Pieces{
 
 		int fromY = from[0];
 		int toY = to[0];
-		System.out.println("pawn coords" + fromX + "," + fromY + "   " + toX + "," + toY + "" );
-
 
 		double deltaX = fromX - toX;
 		double deltaY = fromY - toY;

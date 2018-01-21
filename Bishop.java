@@ -25,7 +25,7 @@ public class Bishop{
 
 		int fromY = from[0];
 		int toY = to[0];
-		System.out.println("bishop coords" + fromX + "," + fromY + "   " + toX + "," + toY + "" );
+		// System.out.println("bishop coords" + fromX + "," + fromY + "   " + toX + "," + toY + "" );
 
 		if (fromX<toX && fromY<toY){//upper left
 			for (int i=fromX+1, j=fromY+1; i<toX; i++, j++){
