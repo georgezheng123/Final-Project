@@ -34,16 +34,22 @@ public class Pawn extends Pieces{
 
 		int fromY = from[0];
 		int toY = to[0];
+		System.out.println("pawn coords" + fromX + "," + fromY + "   " + toX + "," + toY + "" );
+
 
 		double deltaX = fromX - toX;
 		double deltaY = fromY - toY;
-		
+
 		double offset = 1.0;
 		if (color.equals("Black")){
 			offset = -1.0;
 		}
-
-		return Math.abs(deltaY) == 1 && deltaX == offset;
+			// System.out.println(Math.abs(deltaY) == 1.0);
+			// System.out.println(deltaX == offset);
+			// System.out.println(deltaX);
+			// System.out.println(color);
+			// System.out.println(offset);
+		return Math.abs(deltaY) == 1.0 && deltaX == offset;
 	}
 
 	public String toString(){

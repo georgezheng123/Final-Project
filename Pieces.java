@@ -70,7 +70,6 @@ public class Pieces extends JLabel{
 			if (!capture){
 				return Pawn.validate(color,from, to, state);
 			}
-			System.out.println("will now validate pawn cap");
 			return Pawn.pawnCaptureValidate(color,from, to); 
 			
 		}
