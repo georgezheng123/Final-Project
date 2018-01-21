@@ -11,7 +11,7 @@ public class Queen extends Pieces{
 	public static boolean checkUnitCollision(int[] from, int[] to, int[][] state){
 		Boolean bishColl = Bishop.checkUnitCollision(from, to, state);
 		Boolean rookColl = Rook.checkUnitCollision(from, to, state);
-		return  bishColl || rookColl; 
+		return bishColl || rookColl; 
 	}
 
 

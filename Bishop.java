@@ -20,48 +20,49 @@ public class Bishop{
 		if (!validate("color", from, to)){
 			return false;
 		}
-		int fromX = from[1]; //[down, right]
-		int toX = to[0];
+		int fromX = from[1]; 
+		int toX = to[1];
 
 		int fromY = from[0];
-		int toY = to[1];
-
-		System.out.println("bishop coords" + fromX + "," + fromY + "   " + toX + "," + toY + "" );
+		int toY = to[0];
+		// System.out.println("bishop coords" + fromX + "," + fromY + "   " + toX + "," + toY + "" );
 
 		if (fromX<toX && fromY<toY){//upper left
 			for (int i=fromX+1, j=fromY+1; i<toX; i++, j++){
-				if (state[j][i] != 0){
-					// System.out.println("state[j][i] is " + state[j][i]);
-					System.out.println("bis a");
+				if (state[i][j] != 0){
+					// System.out.println("state[" + i+"]["+ j + "] is " + state[i][j]);
+					// System.out.println("bis a");
 					return true;
 				}
 			}
 		}
 		if (fromX>toX && fromY>toY){//down right
 			for (int i=fromX-1, j=fromY-1; i>toX; i--, j--){
-				if (state[j][i] != 0){
-					System.out.println("bish b");
+				// System.out.println("state[" + i+"]["+ j + "] is " + state[i][j]);
+				if (state[i][j] != 0){
+					// System.out.println("bish b");
 					return true;
 				}
 			}
 		}
 		if (fromX<toX && fromY>toY){//down left
 			for (int i=fromX+1, j=fromY-1; i<toX; i++, j--){
-				if (state[j][i] != 0){
-					System.out.println("bish c");
+				if (state[i][j] != 0){
+					// System.out.println("state[" + i+"]["+ j + "] is " + state[i][j]);
+					// System.out.println("bish c");
 					return true;
 				}
 			}
 		}
 		if (fromX>toX && fromY<toY){//upper right
 			for (int i=fromX-1, j=fromY+1; i>toX; i--, j++){
-				if (state[j][i] != 0){
+				if (state[i][j] != 0){
 					System.out.println("bish d");
 					return true;
 				}
 			}
 		}
-		System.out.println("bishop authen passed");
+		// System.out.println("bishop authen passed");
 		return false;
 	}
 

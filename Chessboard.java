@@ -296,8 +296,13 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         else //move
         {
 
-            // System.out.println(from[0] + " " + from[1]);
-            // System.out.println(to[0] + " " + to[1]);
+        int fromX = from[1]; 
+        int toX = to[1];
+
+        int fromY = from[0];
+        int toY = to[0];
+    System.out.println("piece:" + fromX + "," + fromY + "   " + toX + "," + toY + "" );
+
             
             if (validator.validates(false, getColor(chessPiece), pieceType, from, to, state)){
                 parent.add(chessPiece);
