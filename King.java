@@ -60,9 +60,9 @@ public class King extends Pieces{
 
 	public static boolean checkmate(String color, int[][] state){
 		int[] kingLocation = Pieces.findTheKing(otherColor(color), state);
-				    for (int[] i: state){
-        System.out.println(Arrays.toString(i));
-    }
+		for (int[] i: state){
+			System.out.println(Arrays.toString(i));
+		}
 		if (!isInCheck(otherColor(color), state, kingLocation, (color.equals("White")) ? -6 : 6)){
 			System.out.println(otherColor(color) + "king is not in check");
 			return false;
@@ -200,20 +200,26 @@ public class King extends Pieces{
 				int pieceID = state[j][i];
 				int[] from = new int[] {i,j};
 				if (pieceID * type > 0){
-					System.out.println(Arrays.toString(from));
-					Boolean isValid = false;
-					if (Math.abs(pieceID) != 6){
-						isValid = Pieces.validates(true, color, pieceID, from, location, state);
-					}
-					if (isValid){
-						Boolean isInCheck = Pieces.checkIfCheck(color, state, from, location, pieceID);
-						if (!isInCheck) {
-							System.out.println("piece can be blocked");
-							return true;
-						}
+
+					for (int k=0; k<8; k++){
+						for (int m=0; m<8; m++){
+							int[] to = new int[] {k,m};
+							Boolean isValid = false;
+							if (Math.abs(pieceID) != 6){
+								isValid = Pieces.validates(false, color, pieceID, from, to, state);
+							}
+							if (isValid){
+								Boolean isInCheck = Pieces.checkIfCheck(color, state, from, to, pieceID);
+								if (!isInCheck) {
+									System.out.println("piece can be blocked");
+									return true;
+								}
 						// System.out.println("the piece can be captured by the other piece at location" + Arrays.toString(from));
-						
+
+							}
+						}
 					}
+					
 				}
 
 			}
