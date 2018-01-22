@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JOptionPane;
 
 
-// en passant, castling , pawn promotion, checkmate display screen
+// en passant, castling , pawn promotion
 
 
 public class Chessboard extends JFrame implements MouseListener, MouseMotionListener
@@ -337,7 +337,10 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             
         }
         turn += 1;
-        
+        if (pieceType.equals("Pawn") && (to[1] == 0 || to[1] == 7) ){
+            System.out.println("can promote this");
+            pawnPromotion(to, getColor(chessPiece));
+        }
     }
     
 
@@ -407,6 +410,31 @@ public int[][] getBoardState(){
 public static void infoBox(String infoMessage, String titleBar){
         JOptionPane.showMessageDialog(null, infoMessage, "Message: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
     }
+
+public String pawnPromotion(int[] to, String color){
+    String[] options = {"Bishop",
+                    "Rook",
+                    "Queen",
+                    "Knight"};
+int n = JOptionPane.showOptionDialog(chessBoard,
+    "Choose the piece "
+    + "to promote your pawn to",
+    "Pawn Promotion",
+    JOptionPane.YES_NO_CANCEL_OPTION,
+    JOptionPane.QUESTION_MESSAGE,
+    null,
+    options,
+    options[2]);
+// System.out.println(options[n]);
+String fileName = "./Pieces/"+ color + "White"+ options[n]+".png";
+ImageIcon iCon = new ImageIcon(fileName); 
+Pieces piece = new Pieces(new JLabel(iCon));
+JPanel panell = (JPanel)chessBoard.getComponent( to[0] + to[1]*8);
+panell.add(piece.getJLabel());
+
+
+return options[n];
+}    
 
 public void mouseClicked(MouseEvent e) {}
 public void mouseMoved(MouseEvent e) {}
