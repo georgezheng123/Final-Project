@@ -286,6 +286,10 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
                 panel.remove(0);
                 panel.add(chessPiece);
                 parent.validate();
+                state = getBoardState();
+                 for (int[] i: state){
+                System.out.println(Arrays.toString(i));
+    }
             }else{//invalid move!!
                 JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
                 panel.add(chessPiece);
@@ -308,6 +312,8 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             if (validator.validates(false, getColor(chessPiece), pieceType, from, to, state)){
                 parent.add(chessPiece);
                 parent.validate();
+                state = getBoardState();
+                King.checkmate(getColor(chessPiece), state);
             }else{//invalid move!!
                 JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
                 panel.add(chessPiece);

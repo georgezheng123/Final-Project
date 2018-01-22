@@ -55,9 +55,22 @@ public class King extends Pieces{
 				}
 			}
 		}
-		// System.out.println(isChecked);
 		return isChecked;
 	}
+
+	public static boolean checkmate(String color, int[][] state){
+		int[] kingLocation = Pieces.findTheKing(otherColor(color), state);
+				    for (int[] i: state){
+        System.out.println(Arrays.toString(i));
+    }
+		if (!isInCheck(otherColor(color), state, kingLocation, (color.equals("White")) ? -6 : 6)){
+			System.out.println(otherColor(color) + "king is not in check");
+			return false;
+		}
+		System.out.println(otherColor(color) + "king is in check");
+		return true;
+	}
+
 
 	public static String otherColor(String color){
 		if (color.equals("White")){
