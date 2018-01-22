@@ -79,7 +79,7 @@ public class King extends Pieces{
 			return true;
 		}
 		System.out.println("only one piece is checking the king");
-		if(!canCaptureChecking(otherColor(color), state, kingLocation, (color.equals("White")) ? -6 : 6);){
+		if(!canCaptureChecking(otherColor(color), state, kingLocation, (color.equals("White")) ? -6 : 6)){
 			System.out.println("cannot capture checking piece");
 		}
 		return true;
@@ -181,7 +181,10 @@ public class King extends Pieces{
 		return false;
 	}
 
-
+	public static boolean theLastStand(String color, int[][] state, int[] location, int type){
+		
+		return false;
+	}
 
 	public static String otherColor(String color){
 		if (color.equals("White")){
