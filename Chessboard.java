@@ -4,16 +4,10 @@ import java.util.*;
 import javax.swing.*;
 import java.io.*;
 import java.awt.image.BufferedImage;
+import javax.swing.JOptionPane;
 
-// detect checkmate:: 
-// king is in check
-// look at his possible moves, loop through them to see if he'll still be in check
-// look at the piece checking him, if some of his pieces can capture it
-// for every empty square, for every piece of the same color check if
-//moving it will uncheck the king
-// it is checkmates!
-// en passant, castling , pawn promotion
-// TESTING
+
+// en passant, castling , pawn promotion, checkmate display screen
 
 
 public class Chessboard extends JFrame implements MouseListener, MouseMotionListener
@@ -27,8 +21,10 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     int[] to;
     Pieces validator;
     int turn;
+    Boolean checkmate;
 
     public Chessboard(){   
+        checkmate = false;
         turn = 0;
         Pieces validator = new Pieces();
         this.validator = validator;
@@ -194,6 +190,10 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         // }else if (getColor(chessPiece).equals("Black") && turn % 2 == 0){
         //     return;
         // }
+        if (this.checkmate){
+                    infoBox("Checkmate!", "Checkmate!");
+                    return;
+                }
 
         chessPiece.setLocation(e.getX() + moveX, e.getY() + moveY);
 
@@ -218,6 +218,10 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         // }else if (getColor(chessPiece).equals("Black") && turn % 2 == 0){
         //     return;
         // }
+        if (this.checkmate){
+                    infoBox("Checkmate!", "Checkmate!");
+                    return;
+                }
 
         //  The drag location should be within the bounds of the chess board
 
@@ -247,6 +251,10 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         // }else if (getColor(chessPiece).equals("Black") && turn % 2 == 0){
         //     return;
         // }
+        if (this.checkmate){
+                    infoBox("Checkmate!", "Checkmate!");
+                    return;
+                }
 
        // gets rid of the chesspiece
         int[][] state = getBoardState();
@@ -289,7 +297,10 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
                 state = getBoardState();
                  for (int[] i: state){
                 System.out.println(Arrays.toString(i));
-    }
+    }       this.checkmate = King.checkmate(getColor(chessPiece), state);
+                if (this.checkmate){
+                    infoBox("Checkmate!", "Checkmate!");
+                }
             }else{//invalid move!!
                 JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
                 panel.add(chessPiece);
@@ -313,7 +324,10 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
                 parent.add(chessPiece);
                 parent.validate();
                 state = getBoardState();
-                King.checkmate(getColor(chessPiece), state);
+                this.checkmate = King.checkmate(getColor(chessPiece), state);
+                if (this.checkmate){
+                    infoBox("Checkmate!", "Checkmate!");
+                }
             }else{//invalid move!!
                 JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
                 panel.add(chessPiece);
@@ -390,7 +404,9 @@ public int[][] getBoardState(){
     return state;
 }
 
-
+public static void infoBox(String infoMessage, String titleBar){
+        JOptionPane.showMessageDialog(null, infoMessage, "Message: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+    }
 
 public void mouseClicked(MouseEvent e) {}
 public void mouseMoved(MouseEvent e) {}
