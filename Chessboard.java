@@ -175,6 +175,9 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         BlackBishopPiece = new Pieces(new JLabel(BlackBishop));
         BlackBishopPanel = (JPanel)chessBoard.getComponent( 5 );
         BlackBishopPanel.add(BlackBishopPiece.getJLabel());
+        
+        this.setVisible(true);
+        this.setSize(600,600);
 
     }
 
