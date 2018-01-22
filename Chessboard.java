@@ -6,6 +6,7 @@ import java.io.*;
 import java.awt.image.BufferedImage;
 import javax.swing.JOptionPane;
 
+
 public class Chessboard extends JFrame implements MouseListener, MouseMotionListener, ActionListener
 {
 	private Container pane;

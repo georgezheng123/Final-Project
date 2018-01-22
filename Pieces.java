@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.*;
 
 
+
 public class Pieces extends JLabel{ 
 	private int color; 
 	private JLabel label;

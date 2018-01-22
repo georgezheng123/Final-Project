@@ -3,6 +3,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.*;
 
+
 public class Rook extends Pieces{
 	
 	public static boolean validate(String color, int[] from, int[] to){
