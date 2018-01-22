@@ -300,7 +300,12 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     }       this.checkmate = King.checkmate(getColor(chessPiece), state);
                 if (this.checkmate){
                     infoBox("Checkmate!", "Checkmate!");
+
                 }
+                        if (pieceType.equals("Pawn") && (to[1] == 0 || to[1] == 7) ){
+            System.out.println("can promote this");
+            pawnPromotion(to, getColor(chessPiece));
+        }
             }else{//invalid move!!
                 JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
                 panel.add(chessPiece);
@@ -328,6 +333,10 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
                 if (this.checkmate){
                     infoBox("Checkmate!", "Checkmate!");
                 }
+                        if (pieceType.equals("Pawn") && (to[1] == 0 || to[1] == 7) ){
+            System.out.println("can promote this");
+            pawnPromotion(to, getColor(chessPiece));
+        }
             }else{//invalid move!!
                 JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
                 panel.add(chessPiece);
@@ -337,10 +346,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
             
         }
         turn += 1;
-        if (pieceType.equals("Pawn") && (to[1] == 0 || to[1] == 7) ){
-            System.out.println("can promote this");
-            pawnPromotion(to, getColor(chessPiece));
-        }
+
     }
     
 
@@ -412,6 +418,7 @@ public static void infoBox(String infoMessage, String titleBar){
     }
 
 public String pawnPromotion(int[] to, String color){
+    System.out.println("am promoting");
     String[] options = {"Bishop",
                     "Rook",
                     "Queen",
@@ -425,15 +432,18 @@ int n = JOptionPane.showOptionDialog(chessBoard,
     null,
     options,
     options[2]);
-// System.out.println(options[n]);
-String fileName = "./Pieces/"+ color + "White"+ options[n]+".png";
+System.out.println(options[n]);
+String fileName = "./Pieces/"+ color + options[n]+".png";
+System.out.println(fileName);
+
 ImageIcon iCon = new ImageIcon(fileName); 
 Pieces piece = new Pieces(new JLabel(iCon));
 JPanel panel = (JPanel)chessBoard.getComponent( to[0] + to[1]*8);
 panel.remove(0);
 panel.add(piece.getJLabel());
-
-
+Component c =  chessBoard.findComponentAt(to[0]*75, to[1]*75);
+Container parent = (Container)c;
+parent.validate();
 return options[n];
 }    
 
