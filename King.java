@@ -141,8 +141,9 @@ public class King extends Pieces{
 						isValid = validate(color, from, location, state, true);
 					}
 					if (isValid){
-						System.out.println(color + pieceID + "IS CHECKING TEH KING at " 
-							+ Arrays.toString(location) + " from "+ Arrays.toString(from));
+						System.out.println("valid move!");
+						// System.out.println(color + pieceID + "IS CHECKING TEH KING at " 
+						// 	+ Arrays.toString(location) + " from "+ Arrays.toString(from));
 						return canCapture(color, state, from, type);
 					}
 				}
@@ -169,12 +170,13 @@ public class King extends Pieces{
 						isValid = validate(color, from, location, state, false);
 					}
 					if (isValid){
+						System.out.println("offending piece can be captured by a " + color + pieceID + " at " + Arrays.toString(from));
 						Boolean revealedCheck = Pieces.checkIfCheck(color, state, from, location, pieceID);
 						if (revealedCheck) {
 							System.out.println("this is a revealed check, checkmate");
 						}
 						// System.out.println("the piece can be captured by the other piece at location" + Arrays.toString(from));
-						return revealedCheck;
+						return !revealedCheck;
 					}
 				}
 
