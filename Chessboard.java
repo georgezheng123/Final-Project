@@ -4,21 +4,7 @@ import java.util.*;
 import javax.swing.*;
 import java.io.*;
 import java.awt.image.BufferedImage;
-
-// pawn check collision
-// bishop check collision
-// queen check collision
-// check if king is in check, king can't move into check
-// check if move other piece would mean king is in check
-// detect checkmate: 
-// king is in check
-// look at his possible moves, loop through them to see if he'll still be in check
-// look at the piece checking him(more than 1 == checkmate), if some of his pieces can capture it
-// look if some of his pieces can block that piece
-// it is checkmates
-// en passant, castling , pawn promotion
-// TESTING
-
+import javax.swing.JOptionPane;
 
 public class Chessboard extends JFrame implements MouseListener, MouseMotionListener, ActionListener
 {
@@ -31,9 +17,12 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     int[] from;
     int[] to;
     Pieces validator;
+    int turn;
+    Boolean checkmate;
 
-    public Chessboard()
-    {
+    public Chessboard(){   
+        checkmate = false;
+        turn = 0;
         Pieces validator = new Pieces();
         this.validator = validator;
         Dimension boardSize = new Dimension(600, 600);
@@ -187,6 +176,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     //dragging selected piece
     public void mousePressed(MouseEvent e)
     {
+
         chessPiece = null;
         Component c =  chessBoard.findComponentAt(e.getX(), e.getY());
         //System.out.println(c);
@@ -197,7 +187,17 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         Point parentLocation = c.getParent().getLocation();
         moveX = parentLocation.x - e.getX();
         moveY = parentLocation.y - e.getY();
-        chessPiece = (JLabel) c;
+        chessPiece = (JLabel) c; 
+        // if (getColor(chessPiece).equals("White") && turn % 2 == 1){
+        //     return;
+        // }else if (getColor(chessPiece).equals("Black") && turn % 2 == 0){
+        //     return;
+        // }
+        if (this.checkmate){
+                    infoBox("Checkmate!", "Checkmate!");
+                    return;
+                }
+
         chessPiece.setLocation(e.getX() + moveX, e.getY() + moveY);
 
 
@@ -216,6 +216,15 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     public void mouseDragged(MouseEvent me)
     {
         if (chessPiece == null) return;
+        // if (getColor(chessPiece).equals("White") && turn % 2 == 1){
+        //     return;
+        // }else if (getColor(chessPiece).equals("Black") && turn % 2 == 0){
+        //     return;
+        // }
+        if (this.checkmate){
+                    infoBox("Checkmate!", "Checkmate!");
+                    return;
+                }
 
         //  The drag location should be within the bounds of the chess board
 
@@ -239,6 +248,16 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         newPane.setCursor(null);
 
         if (chessPiece == null) return;
+
+        // if (getColor(chessPiece).equals("White") && turn % 2 == 1){
+        //     return;
+        // }else if (getColor(chessPiece).equals("Black") && turn % 2 == 0){
+        //     return;
+        // }
+        if (this.checkmate){
+                    infoBox("Checkmate!", "Checkmate!");
+                    return;
+                }
 
        // gets rid of the chesspiece
         int[][] state = getBoardState();
@@ -269,12 +288,8 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
          //cannot capture of same type
             Point parentLocation = c.getParent().getLocation();
             to = getCoord(parentLocation);
-
-
-            Boolean isDiffColor = diffColor(chessPiece, (JLabel) c);
-            Boolean isValidMove = validator.validates(true, getColor(chessPiece) , pieceType, from, to, state);
             
-            if (isValidMove && isDiffColor){
+            if (diffColor(chessPiece, (JLabel) c) && validator.validates(true, getColor(chessPiece) , pieceType, from, to, state)){
                 //System.out.println(parent);
                 // parent.remove(0);
                 // parent.add( chessPiece );
@@ -282,30 +297,61 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
                 panel.remove(0);
                 panel.add(chessPiece);
                 parent.validate();
+                state = getBoardState();
+                 for (int[] i: state){
+                System.out.println(Arrays.toString(i));
+    }       this.checkmate = King.checkmate(getColor(chessPiece), state);
+                if (this.checkmate){
+                    infoBox("Checkmate!", "Checkmate!");
+
+                }
+                        if (pieceType.equals("Pawn") && (to[1] == 0 || to[1] == 7) ){
+            System.out.println("can promote this");
+            pawnPromotion(to, getColor(chessPiece));
+        }
             }else{//invalid move!!
                 JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
                 panel.add(chessPiece);
+                turn -= 1;
+                parent.validate();
             }
         }
 
         else //move
         {
 
-            // System.out.println(from[0] + " " + from[1]);
-            // System.out.println(to[0] + " " + to[1]);
+        int fromX = from[1]; 
+        int toX = to[1];
+
+        int fromY = from[0];
+        int toY = to[0];
+    System.out.println("piece:" + fromX + "," + fromY + "   " + toX + "," + toY + "" );
+
             
-            System.out.println(pieceType);
             if (validator.validates(false, getColor(chessPiece), pieceType, from, to, state)){
                 parent.add(chessPiece);
                 parent.validate();
+                state = getBoardState();
+                this.checkmate = King.checkmate(getColor(chessPiece), state);
+                if (this.checkmate){
+                    infoBox("Checkmate!", "Checkmate!");
+                }
+                        if (pieceType.equals("Pawn") && (to[1] == 0 || to[1] == 7) ){
+            System.out.println("can promote this");
+            pawnPromotion(to, getColor(chessPiece));
+        }
             }else{//invalid move!!
                 JPanel panel = (JPanel)chessBoard.getComponent( from[0] + from[1]*8);
                 panel.add(chessPiece);
-            }
+                turn -= 1;
+                parent.validate();
+            }//put checkmate check function after a sucessful move or capture
             
         }
+        turn += 1;
 
     }
+    
 
     public static String getImageName(JLabel label){//gets the name of the image file
         Icon icon = label.getIcon();
@@ -338,7 +384,7 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     
 
 public int[][] getBoardState(){
-    int[][] state = new int[8][8];
+    int[][] state = new int[8][8]; //[down, right]
     // Component[] cc = chessBoard.getComponents();
     // for (Component i: cc){
     //     System.out.println(i);
@@ -350,12 +396,19 @@ public int[][] getBoardState(){
             if (c instanceof JPanel){
                 state[j][i] = 0;
             }else{
-                state[j][i] = 1;
+                int color = 1;
+                if (getColor((JLabel) c).equals("Black")){
+                    color = -1;
+                }
+                state[j][i] = validator.getID(getImageName((JLabel) c))*color;
                 // System.out.println(getImageName((JLabel) c) + i + " " + j);
                 counter++;
             }
         }
     }
+
+
+    // System.out.println("master :");
     // for (int[] i: state){
     //     System.out.println(Arrays.toString(i));
     // }
@@ -370,7 +423,39 @@ public void actionPerformed(ActionEvent e){
 	}*/
 }
 
+public static void infoBox(String infoMessage, String titleBar){
+        JOptionPane.showMessageDialog(null, infoMessage, "Message: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+    }
 
+public String pawnPromotion(int[] to, String color){
+    System.out.println("am promoting");
+    String[] options = {"Bishop",
+                    "Rook",
+                    "Queen",
+                    "Knight"};
+int n = JOptionPane.showOptionDialog(chessBoard,
+    "Choose the piece "
+    + "to promote your pawn to",
+    "Pawn Promotion",
+    JOptionPane.YES_NO_CANCEL_OPTION,
+    JOptionPane.QUESTION_MESSAGE,
+    null,
+    options,
+    options[2]);
+System.out.println(options[n]);
+String fileName = "./Pieces/"+ color + options[n]+".png";
+System.out.println(fileName);
+
+ImageIcon iCon = new ImageIcon(fileName); 
+Pieces piece = new Pieces(new JLabel(iCon));
+JPanel panel = (JPanel)chessBoard.getComponent( to[0] + to[1]*8);
+panel.remove(0);
+panel.add(piece.getJLabel());
+Component c =  chessBoard.findComponentAt(to[0]*75, to[1]*75);
+Container parent = (Container)c;
+parent.validate();
+return options[n];
+}    
 
 public void mouseClicked(MouseEvent e) {}
 public void mouseMoved(MouseEvent e) {}
