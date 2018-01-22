@@ -74,6 +74,10 @@ public class King extends Pieces{
 		}
 		System.out.println(otherColor(color) + "king cannot move away");
 		System.out.println("numb checking: " + numbCheckingPiece(otherColor(color), state, kingLocation, (color.equals("White")) ? -6 : 6));
+		if (1 < numbCheckingPiece(otherColor(color), state, kingLocation, (color.equals("White")) ? -6 : 6)){
+			System.out.println(otherColor(color) + "king cannot move away with more than one piece, this is checkmate");
+			return true;
+		}
 		return true;
 	}
 
