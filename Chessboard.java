@@ -26,7 +26,6 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     JLayeredPane newPane;
     JPanel chessBoard;
     JLabel chessPiece;
-    private JButton restart;
     int moveY;
     int moveX;
     int[] from;
@@ -38,10 +37,9 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         Pieces validator = new Pieces();
         this.validator = validator;
         Dimension boardSize = new Dimension(600, 600);
-        restart = new JButton("RESTART");
+       /* restart = new JButton("RESTART");
         restart.addActionListener(this);
-        restart.setFont(new Font("Times New Roman", Font.PLAIN, 30));
-        newPane.add(restart);
+        restart.setFont(new Font("Times New Roman", Font.PLAIN, 30));*/
 
         //layered Pane so you can add MouseListener
 
