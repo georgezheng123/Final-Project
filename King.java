@@ -79,6 +79,9 @@ public class King extends Pieces{
 			return true;
 		}
 		System.out.println("only one piece is checking the king");
+		if(canCaptureChecking(otherColor(color), state, kingLocation, (color.equals("White")) ? -6 : 6)){
+			return false;
+		}
 		if(!canCaptureChecking(otherColor(color), state, kingLocation, (color.equals("White")) ? -6 : 6)){
 			System.out.println("cannot capture checking piece");
 			if(theLastStand(otherColor(color), state, kingLocation, (color.equals("White")) ? -6 : 6)){
@@ -180,10 +183,10 @@ public class King extends Pieces{
 						System.out.println("offending piece can be captured by a " + color + pieceID + " at " + Arrays.toString(from));
 						Boolean revealedCheck = Pieces.checkIfCheck(color, state, from, location, pieceID);
 						if (revealedCheck) {
-							System.out.println("this is a revealed check, checkmate");
+							continue;
 						}
-						// System.out.println("the piece can be captured by the other piece at location" + Arrays.toString(from));
-						return !revealedCheck;
+						System.out.println("the piece can be captured by the other piece at location" + Arrays.toString(from));
+						return true;
 					}
 				}
 
