@@ -6,10 +6,6 @@ import java.io.*;
 import java.awt.image.BufferedImage;
 import javax.swing.JOptionPane;
 
-
-// en passant, castling , pawn promotion
-
-
 public class Chessboard extends JFrame implements MouseListener, MouseMotionListener
 {
     JLayeredPane newPane;
