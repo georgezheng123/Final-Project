@@ -68,9 +68,53 @@ public class King extends Pieces{
 			return false;
 		}
 		System.out.println(otherColor(color) + "king is in check");
+		if (canMoveAway(otherColor(color), state, kingLocation, (color.equals("White")) ? -6 : 6)){
+			System.out.println(otherColor(color) + "king can move away");
+			return false;
+		}
+		System.out.println(otherColor(color) + "king cannot move away");
+
 		return true;
 	}
 
+	public static boolean canMoveAway(String color, int[][] state, int[] location, int type){
+		for (int i=0; i<8; i++){
+			for (int j=0; j<8; j++){
+				int[] to = new int[] {i,j};
+				if (validate(color, location, to, state, false)){
+					System.out.println(Arrays.toString(to));
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public static int numbCheckingPiece(String color, int[][] state, int[] location, int type){
+		// for (int[] i: state){
+  //   	    System.out.println(Arrays.toString(i));
+  //   	}
+		color = otherColor(color);
+		int counter = 0;
+		for (int i=0; i<8; i++){
+			for (int j=0; j<8; j++){
+				int pieceID = state[j][i];
+				int[] from = new int[] {i,j};
+				if (pieceID * type < 0){
+					Boolean isValid;
+					if (Math.abs(pieceID) != 6){
+						isValid = Pieces.validates(true, color, pieceID, from, location, state);
+					}else{
+						isValid = validate(color, from, location, state, true);
+					}
+					if (isValid){
+						counter += 1;
+					}
+				}
+			}
+		}
+		return counter;
+	}
 
 	public static String otherColor(String color){
 		if (color.equals("White")){
