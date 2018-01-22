@@ -152,6 +152,26 @@ public class King extends Pieces{
 
 	public static boolean canCapture(String color, int[][] state, int[] location, int type){
 		System.out.println("will now check if it is possible to capture the " + color + " piece at " + Arrays.toString(location));
+		color = otherColor(color);
+		for (int i=0; i<8; i++){
+			for (int j=0; j<8; j++){
+				int pieceID = state[j][i];
+				int[] from = new int[] {i,j};
+				if (pieceID * type < 0){
+					Boolean isValid;
+					if (Math.abs(pieceID) != 6){
+						isValid = Pieces.validates(true, color, pieceID, from, location, state);
+					}else{
+						isValid = validate(color, from, location, state, true);
+					}
+					if (isValid){
+						System.out.println("the piece can be captured by the other piece at location" + Arrays.toString(from));
+						return canCapture(color, state, from, type);
+					}
+				}
+
+			}
+		}
 		return false;
 	}
 
