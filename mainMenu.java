@@ -24,7 +24,7 @@ public class mainMenu extends JFrame {
 
 	backImage = new JLabel();
 	backImage.setLayout(new FlowLayout(FlowLayout.CENTER));
-	backImage.add(Box.createRigidArea(new Dimension(1000,475)));
+	backImage.add(Box.createRigidArea(new Dimension(1000,600)));
 
 	backImage.setIcon(new ImageIcon("mainMenu.png"));
 
@@ -35,13 +35,14 @@ public class mainMenu extends JFrame {
 	start.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 
 	backImage.add(start);
-	backImage.add(Box.createRigidArea(new Dimension(800,800)));
+	backImage.add(Box.createRigidArea(new Dimension(700,700)));
 	pane.add(backImage);
 	this.pack();
 	this.setVisible(true);
 	
 
 	this.setTitle("CHESS");
+	this.setResizable( false );
 	this.setSize(800,800);
 	this.setLocation(100,10);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
