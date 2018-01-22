@@ -142,10 +142,16 @@ public class King extends Pieces{
 					if (isValid){
 						System.out.println(color + pieceID + "IS CHECKING TEH KING at " 
 							+ Arrays.toString(location) + " from "+ Arrays.toString(from));
+						return canCapture(color, state, from, type);
 					}
 				}
 			}
 		}
+		return false;
+	}
+
+	public static boolean canCapture(String color, int[][] state, int[] location, int type){
+		System.out.println("will now check if it is possible to capture the " + color + " piece at " + Arrays.toString(location));
 		return false;
 	}
 
