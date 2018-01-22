@@ -429,8 +429,9 @@ int n = JOptionPane.showOptionDialog(chessBoard,
 String fileName = "./Pieces/"+ color + "White"+ options[n]+".png";
 ImageIcon iCon = new ImageIcon(fileName); 
 Pieces piece = new Pieces(new JLabel(iCon));
-JPanel panell = (JPanel)chessBoard.getComponent( to[0] + to[1]*8);
-panell.add(piece.getJLabel());
+JPanel panel = (JPanel)chessBoard.getComponent( to[0] + to[1]*8);
+panel.remove(0);
+panel.add(piece.getJLabel());
 
 
 return options[n];
