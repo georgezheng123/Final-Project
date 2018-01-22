@@ -89,8 +89,7 @@ public class King extends Pieces{
 		for (int i=0; i<8; i++){
 			for (int j=0; j<8; j++){
 				int[] to = new int[] {i,j};
-				if (validate(color, location, to, state, false)){
-					System.out.println(Arrays.toString(to));
+				if (validate(color, location, to, state, false) && state[to[1]][to[0]] == 0){
 					return true;
 				}
 			}
