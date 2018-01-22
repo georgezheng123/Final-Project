@@ -211,7 +211,7 @@ public class King extends Pieces{
 							if (isValid){
 								Boolean isInCheck = Pieces.checkIfCheck(color, state, from, to, pieceID);
 								if (!isInCheck) {
-									System.out.println("piece can be blocked by" + color + pieceID + " at " + Arrays.toString(from));
+									System.out.println("piece can be blocked by" + color + pieceID + " at " + Arrays.toString(from) + "by moving to" + Arrays.toString(to));
 									return true;
 								}
 						// System.out.println("the piece can be captured by the other piece at location" + Arrays.toString(from));
