@@ -201,11 +201,12 @@ public class King extends Pieces{
 				int[] from = new int[] {i,j};
 				if (pieceID * type > 0){
 
-					for (int k=0; k<8; k++){
+					for (int k=0; k<8; k++){ 
 						for (int m=0; m<8; m++){
 							int[] to = new int[] {k,m};
 							Boolean isValid = false;
-							if (Math.abs(pieceID) != 6){
+							int otherPieceID = state[m][k];
+							if (otherPieceID == 0 && Math.abs(pieceID) != 6){
 								isValid = Pieces.validates(false, color, pieceID, from, to, state);
 							}
 							if (isValid){
