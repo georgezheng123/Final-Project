@@ -188,11 +188,11 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
         moveX = parentLocation.x - e.getX();
         moveY = parentLocation.y - e.getY();
         chessPiece = (JLabel) c; 
-        // if (getColor(chessPiece).equals("White") && turn % 2 == 1){
-        //     return;
-        // }else if (getColor(chessPiece).equals("Black") && turn % 2 == 0){
-        //     return;
-        // }
+        if (getColor(chessPiece).equals("White") && turn % 2 == 1){
+            return;
+        }else if (getColor(chessPiece).equals("Black") && turn % 2 == 0){
+            return;
+        }
         if (this.checkmate){
                     infoBox("Checkmate!", "Checkmate!");
                     return;
@@ -216,11 +216,11 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
     public void mouseDragged(MouseEvent me)
     {
         if (chessPiece == null) return;
-        // if (getColor(chessPiece).equals("White") && turn % 2 == 1){
-        //     return;
-        // }else if (getColor(chessPiece).equals("Black") && turn % 2 == 0){
-        //     return;
-        // }
+        if (getColor(chessPiece).equals("White") && turn % 2 == 1){
+            return;
+        }else if (getColor(chessPiece).equals("Black") && turn % 2 == 0){
+            return;
+        }
         if (this.checkmate){
                     infoBox("Checkmate!", "Checkmate!");
                     return;
@@ -249,11 +249,11 @@ public class Chessboard extends JFrame implements MouseListener, MouseMotionList
 
         if (chessPiece == null) return;
 
-        // if (getColor(chessPiece).equals("White") && turn % 2 == 1){
-        //     return;
-        // }else if (getColor(chessPiece).equals("Black") && turn % 2 == 0){
-        //     return;
-        // }
+        if (getColor(chessPiece).equals("White") && turn % 2 == 1){
+            return;
+        }else if (getColor(chessPiece).equals("Black") && turn % 2 == 0){
+            return;
+        }
         if (this.checkmate){
                     infoBox("Checkmate!", "Checkmate!");
                     return;
