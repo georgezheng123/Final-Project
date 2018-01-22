@@ -15,20 +15,21 @@ public class Pawn extends Pieces{
 
 		double deltaX = fromX - toX;
 		double deltaY = fromY - toY;
-
+		System.out.println(deltaX);
+		System.out.println(deltaY);
 
 		double offset = 1.0;
 		if (color.equals("Black")){
 			offset = -1.0;
 		}
 
-		if (fromX == 6 && deltaX == 2.0){
+		if (fromX == 6 && deltaX == 2.0 && deltaY == 0){
 			return state[5][fromY] == 0 && state[4][fromY] == 0;
 		}
 		
 		if (fromX == 6) return (deltaY == 0.0 && (deltaX == offset || deltaX == 2.0) && state[5][fromY] == 0);
 		
-		if (fromX == 1 && deltaX == -2.0){
+		if (fromX == 1 && deltaX == -2.0 && deltaY == 0){
 			return state[2][fromY] == 0 && state[3][fromY] == 0;
 		}
 
