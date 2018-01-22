@@ -1,4 +1,4 @@
-# <b> Final Project: CHESS </b>
+# <b> WARNING: THIS BRANCH IS BROKEN</b>
 Welcome to CHESS by George Zheng and Anne Zhang
 ## HOW TO PLAY!
 1. Get yourself a friend!
