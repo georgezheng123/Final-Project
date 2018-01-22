@@ -79,7 +79,9 @@ public class King extends Pieces{
 			return true;
 		}
 		System.out.println("only one piece is checking the king");
-		canCaptureChecking(otherColor(color), state, kingLocation, (color.equals("White")) ? -6 : 6);
+		if(!canCaptureChecking(otherColor(color), state, kingLocation, (color.equals("White")) ? -6 : 6);){
+			System.out.println("cannot capture checking piece");
+		}
 		return true;
 	}
 
@@ -153,27 +155,33 @@ public class King extends Pieces{
 	public static boolean canCapture(String color, int[][] state, int[] location, int type){
 		System.out.println("will now check if it is possible to capture the " + color + " piece at " + Arrays.toString(location));
 		color = otherColor(color);
+		type  = ((color.equals("White")) ? -1 : 1);
+		System.out.println(color + " " + type + Arrays.toString(location));
 		for (int i=0; i<8; i++){
 			for (int j=0; j<8; j++){
 				int pieceID = state[j][i];
 				int[] from = new int[] {i,j};
 				if (pieceID * type < 0){
+					System.out.println(Arrays.toString(from));
 					Boolean isValid;
 					if (Math.abs(pieceID) != 6){
 						isValid = Pieces.validates(true, color, pieceID, from, location, state);
 					}else{
-						isValid = validate(color, from, location, state, true);
+						isValid = validate(color, from, location, state, false);
 					}
 					if (isValid){
 						System.out.println("the piece can be captured by the other piece at location" + Arrays.toString(from));
-						return canCapture(color, state, from, type);
+						return true;
 					}
 				}
 
 			}
 		}
+		System.out.println("the other piece cannot be captured");
 		return false;
 	}
+
+
 
 	public static String otherColor(String color){
 		if (color.equals("White")){
