@@ -186,7 +186,31 @@ public class King extends Pieces{
 	}
 
 	public static boolean theLastStand(String color, int[][] state, int[] location, int type){
-		
+		type = ((color.equals("White")) ? 1 : -1);
+		for (int i=0; i<8; i++){
+			for (int j=0; j<8; j++){
+				int pieceID = state[j][i];
+				int[] from = new int[] {i,j};
+				if (pieceID * type > 0){
+					System.out.println(Arrays.toString(from));
+					Boolean isValid = false;
+					if (Math.abs(pieceID) != 6){
+						isValid = Pieces.validates(true, color, pieceID, from, location, state);
+					}
+					if (isValid){
+						Boolean isInCheck = Pieces.checkIfCheck(color, state, from, location, pieceID);
+						if (!isInCheck) {
+							System.out.println("piece can be blocked");
+							return isInCheck;
+						}
+						// System.out.println("the piece can be captured by the other piece at location" + Arrays.toString(from));
+						
+					}
+				}
+
+			}
+		}
+		System.out.println("the other piece cannot be blocked, checkmate!");
 		return false;
 	}
 
